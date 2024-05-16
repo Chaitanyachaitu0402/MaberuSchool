@@ -17,7 +17,7 @@ export default function Administration({ navigation }) {
 
     return (
 
-        <ScrollView>
+        
 
             <View style={{ flex: 1, backgroundColor: colors.primary, height: Dimensions.get('window').height }} >
 
@@ -117,7 +117,7 @@ export default function Administration({ navigation }) {
             </View>
 
 
-        </ScrollView>
+        
 
     )
 }
