@@ -63,6 +63,40 @@ export default function Addsection({ navigation }) {
     setrefreshToken(refreshtoken);
   }
 
+
+  const handleGetStarted2 = async () => {
+            try {
+                const response = await fetch('http://10.0.2.2:3000/class/create_class', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        class_Name: classname,
+                    }),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                console.log("done2", response)
+                if (!response.ok) {
+                    throw new Error('Failed to details. Status: ' + response.status);
+                }
+                const data = await response.json();
+                console.log("Student details created ===> ", data)
+                if (data.success) {
+                    // Show alert box
+                    Alert.alert("New Class Created Successfully");
+                    // Navigate to Sectiondetails screen
+                    navigation.navigate('Classlist');
+                } else {
+                    Alert.alert("Error in creating the student details");
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+
   const Addsection = async () => {
     try {
       const sectionresponse = await fetch("https://localhost.com:3000/create-section", {

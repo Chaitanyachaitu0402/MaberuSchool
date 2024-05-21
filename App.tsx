@@ -138,7 +138,7 @@ export default function App() {
   return (
 
     <NavigationContainer>
-    <stack.Navigator initialRouteName='schoolbottomtab' screenOptions={{
+    <stack.Navigator initialRouteName='Splash' screenOptions={{
       headerStyle: {
         backgroundColor: colors.background,
       },
@@ -148,16 +148,16 @@ export default function App() {
       },
 
     }}>
-        <stack.Screen name='schoolbottomtab' component={Bottomstack4} options={{ headerShown: false }}></stack.Screen>
+        {/* <stack.Screen name='schoolbottomtab' component={Bottomstack4} options={{ headerShown: false }}></stack.Screen> */}
         <stack.Screen name='Onboard' component={Onboard} options={{ headerShown: false}}></stack.Screen>
         <stack.Screen name='Login' component={Login} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Forgot' component={Forgot} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Addclass' component={Addclass} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Editclass' component={Editclass} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Addstudent' component={Addstudent} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Editstudent' component={Editstudent} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Addsection' component={Addsection} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Editsection' component={Editsection} options={{ headerShown: false }}></stack.Screen>
+        <stack.Screen name='Addclass' component={Addclass} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Editclass' component={Editclass} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Addstudent' component={Addstudent} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Editstudent' component={Editstudent} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Addsection' component={Addsection} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Editsection' component={Editsection} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Menubar' component={Menubar} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Editteacher' component={Editteacher} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Addbranch' component={Addbranch} options={{ headerShown: false }}></stack.Screen>
@@ -419,9 +419,9 @@ export default function App() {
 export const DrawStacks = () => {
   const{colors}=useTheme();
   return (
-    <Drawstack.Navigator initialRouteName='Directorhome' >
+    <Drawstack.Navigator initialRouteName='Administration' >
    
-    <Drawstack.Screen name="Directorhome" component={Directorhome}
+    <Drawstack.Screen name="Administration" component={Administration}
         options={{
            title: 'Home',
             drawerIcon: ({ size}) => (
@@ -935,60 +935,60 @@ export const DrawStack5 = () => {
 }
 
 
+// bottom bar
 
-
-export const Bottomstack4 = () => {
-  return (
-    <schoolbotstack.Navigator >
-        <schoolbotstack.Screen name='Schooldrawer5' component={DrawStack5} options={{
-        title: 'sytemadmin',
-        headerShown: false,
-        tabBarIcon: ({ focused }) => (
-          <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
-        ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
-      }} />  
-       <schoolbotstack.Screen name='Schooldrawer3' component={DrawStack3} options={{
-        title: 'Techer',
-        headerShown: false,
-        tabBarIcon: ({ focused }) => (
-          <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
-        ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
-      }} />  
-       <schoolbotstack.Screen name='Schooldrawer2' component={DrawStack2} options={{
-        title: 'Principal',
-        headerShown: false,
-        tabBarIcon: ({ focused }) => (
-          <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
-        ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
-      }} />   
+// export const Bottomstack4 = () => {
+//   return (
+//     <schoolbotstack.Navigator >
+//         <schoolbotstack.Screen name='Schooldrawer5' component={DrawStack5} options={{
+//         title: 'systemadmin',
+//         headerShown: false,
+//         tabBarIcon: ({ focused }) => (
+//           <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
+//         ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
+//       }} />  
+//        <schoolbotstack.Screen name='Schooldrawer3' component={DrawStack3} options={{
+//         title: 'Techer',
+//         headerShown: false,
+//         tabBarIcon: ({ focused }) => (
+//           <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
+//         ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
+//       }} />  
+//        <schoolbotstack.Screen name='Schooldrawer2' component={DrawStack2} options={{
+//         title: 'Principal',
+//         headerShown: false,
+//         tabBarIcon: ({ focused }) => (
+//           <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
+//         ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
+//       }} />   
      
-        <schoolbotstack.Screen name='Schooldrawer4' component={DrawStack4} options={{
-        title: 'parent',
-        headerShown: false,
-        tabBarIcon: ({ focused }) => (
-          <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
-        ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
-      }} /> 
-       <schoolbotstack.Screen name='Schooldrawer' component={DrawStacks} options={{
-        title: 'Director',
-        headerShown: false,
-        tabBarIcon: ({ focused }) => (
-          <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
-        ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
-      }} />  
+//         <schoolbotstack.Screen name='Schooldrawer4' component={DrawStack4} options={{
+//         title: 'parent',
+//         headerShown: false,
+//         tabBarIcon: ({ focused }) => (
+//           <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
+//         ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
+//       }} /> 
+//        <schoolbotstack.Screen name='Schooldrawer' component={DrawStacks} options={{
+//         title: 'Director',
+//         headerShown: false,
+//         tabBarIcon: ({ focused }) => (
+//           <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
+//         ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
+//       }} />  
        
-           <schoolbotstack.Screen name='Login' component={Login} options={{
-        title: 'Login',
-        headerShown: false,
-        tabBarIcon: ({ focused }) => (
-          <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
-        ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
-      }} />    
+//            <schoolbotstack.Screen name='Login' component={Login} options={{
+//         title: 'Login',
+//         headerShown: false,
+//         tabBarIcon: ({ focused }) => (
+//           <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
+//         ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
+//       }} />    
 
 
-    </schoolbotstack.Navigator>
-  )  
-}
+//     </schoolbotstack.Navigator>
+//   )  
+// }
 
 
 export const Topstack = () => {

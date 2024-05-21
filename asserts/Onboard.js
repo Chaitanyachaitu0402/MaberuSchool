@@ -1,68 +1,132 @@
-import { View, Text, Image, Dimensions } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { useTheme, Card } from 'react-native-paper';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, Image, ActivityIndicator, ImageBackground } from 'react-native';
+import AppIntroSlider from 'react-native-app-intro-slider';
+import Login from '../asserts/Login';
 
-
-export default function Onboard({ navigation }) {
-
-    const { colors } = useTheme();
-
-// const home=()=>{
-//     navigation.navigate("schooldrawer")
-// }
-  const home = async () => {
-    navigation.navigate("Login")
+const slides = [
+  {
+    key: 1,
+    title: 'Interactive Dashboard',
+    text: 'Stay on top of your tasks with our dynamic, real-time dashboard.',
+    image: require('./Image/demo.png'),
+    backgroundColor: '#59b2ab',
+  },
+  {
+    key: 2,
+    title: 'Authentication',
+    text: 'Secure your access with seamless, robust authentication.',
+    image: require('./Image/onboard2.png'),
+    backgroundColor: '#febe29',
+  },
+  {
+    key: 3,
+    title: 'Get Started',
+    text: 'Begin your journey effortlessly with our intuitive onboarding.',
+    image: require('./Image/onboard3.png'),
+    backgroundColor: '#22bcb5',
   }
+];
 
+export default function Onboard() {
+  const [showRealApp, setShowRealApp] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const home2 = async () => {
-    navigation.navigate("schooldrawer2")
-  }
-  const home3 = async () => {
-    navigation.navigate("schooldrawer3")
-  }
-  const home4 = async () => {
-    navigation.navigate("schooldrawer4")
-  }
-  
+  const _renderItem = ({ item }) => {
     return (
+      <View style={styles.slide}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Image source={item.image} style={styles.image} />
+        <Text style={styles.text}>{item.text}</Text>
+      </View>
+    );
+  };
 
-        <View style={{ flex: 1, backgroundColor:colors.background}}>
+  const _renderNextButton = () => {
+    return (
+      <View style={styles.buttonContainer}>
+        <Text style={styles.buttonText}>Next</Text>
+      </View>
+    );
+  };
 
-            <Image source={require("./Image/School.jpg")} style={{ width: '40%', height: 120, alignSelf: 'center', marginTop: 30, justifyContent: 'center', borderRadius: 11 }}></Image>
+  const _renderDoneButton = () => {
+    return (
+      <View style={styles.buttonContainer}>
+        <Text style={styles.buttonText}>Done</Text>
+      </View>
+    );
+  };
 
-            <View style={{ flexDirection: 'row', marginTop: 35, width: "96%", alignSelf: 'center', justifyContent: 'center', columnGap: 10,right:9 }}>
-                <Card style={{ width: "40%", height: 130, marginStart: 13 }}onPress={home4}>
-                    <Card.Cover source={require("./Image/parent.png")} style={{ width: "40%", height: 60, alignSelf: "center", marginTop: 9 }}></Card.Cover>
-                    <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', marginTop: 13,color:colors.text}}>Parent App</Text>
-                </Card>
+  const _onDone = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setShowRealApp(true);
+    }, 2000); // Simulate a loading delay
+  };
 
-                <Card style={{ width: "40%", height: 130, marginStart: 13 }}onPress={home3}>
-                    <Card.Cover source={require("./Image/teacher.png")} style={{ width: "40%", height: 60, alignSelf: "center", marginTop: 9 }}>
-                    </Card.Cover>
-                    <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', marginTop: 13 ,color:colors.text}}>Teacher App</Text>
-                </Card>
+  if (isLoading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#4146B5" />
+        <Text style={styles.loadingText}>Loading...</Text>
+      </View>
+    );
+  }
 
-            </View>
-
-            <View style={{ flexDirection: 'row', marginTop: 34, width: "96%", alignSelf: 'center', justifyContent: 'center', columnGap: 10,right:9 }}>
-                <Card style={{ width: "40%", height: 130, marginStart: 13 }}onPress={home} >
-                    <Card.Cover source={require("./Image/principal.png")} style={{ width: "40%", height: 60, alignSelf: "center", marginTop: 9 }}></Card.Cover>
-                    <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', marginTop: 13 ,color:colors.text}}>Principal App</Text>
-                </Card>
-
-                <Card style={{ width: "40%", height: 130, marginStart: 13 }} onPress={home2}>
-                    <Card.Cover source={require("./Image/head.png")} style={{ width: "40%", height: 60, alignSelf: "center", marginTop: 9 }}>
-                    </Card.Cover>
-                    <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', marginTop: 13 ,color:colors.text}}>Headmaster App</Text>
-                </Card>
-            </View>
-
-
-        </View>
-    )
+  if (showRealApp) {
+    return <Login />;
+  } else {
+    return (
+      <AppIntroSlider
+        renderItem={_renderItem}
+        data={slides}
+        renderNextButton={_renderNextButton}
+        renderDoneButton={_renderDoneButton}
+        onDone={_onDone}
+      />
+    );
+  }
 }
 
-
-
-
+const styles = StyleSheet.create({
+  slide: {
+    flex: 1,
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 30,
+    color: "#4146B5",
+    fontWeight: "bold",
+  },
+  text: {
+    fontSize: 20,
+    color: "black",
+    textAlign: "center",
+  },
+  image: {
+    borderRadius: 50,
+  },
+  buttonContainer: {
+    padding: 15,
+    backgroundColor: '#4146B5',
+    borderRadius: 15,
+  },
+  buttonText: {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: "bold",
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 18,
+    color: '#4146B5',
+  },
+});

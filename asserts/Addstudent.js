@@ -9,7 +9,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import DatePicker from 'react-native-date-picker'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Addstudent({navigation}) {
+
+export default function Addstudent({ navigation }) {
 
     const [gender, setgender] = useState(" ");
     const { colors } = useTheme();
@@ -27,10 +28,56 @@ export default function Addstudent({navigation}) {
     const [birthdata, setbirthdata] = useState("")
 
     const branchdata = [
-        { label: 'Branch 1', value: '1' },
-        { label: 'Branch 2', value: '2' },
-        { label: 'Branch 3', value: '3' },
+        { label: 'First', value: '1' },
+        { label: 'Second', value: '2' },
+        { label: 'Third', value: '3' },
     ];
+    const handleGetStarted2 = async () => {
+        try {
+            const response = await fetch('http://10.0.2.2:3000/students/create-student', {
+                method: 'POST',
+                body: JSON.stringify({
+                    Name: name,
+                    gender: gender,
+                    Date_of_Birth:birthdate,
+                    Admission_id:admission,
+                    Joining_date:joindate,
+                    Mother_Name:mothername,
+                    Mother_Occupation:motheroccupation,
+                    Father_Name:fathername,
+                    Father_Occupation:fatheroccupation,
+                    MobileNumber:mobilenumber,
+                    EmergencyContact:relationmobilenumber,
+                    Present_Address:address,
+                    Branch:Branchvalue,
+                    Class:Classvalue,
+                    Section:Sectionvalue,
+                }),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            });
+    
+            console.log("done2", response)
+            if (!response.ok) {
+                throw new Error('Failed to details. Status: ' + response.status);
+            }
+            const data = await response.json();
+            console.log("Student details created ===> ", data)
+            if (data.success) {
+                // Show alert box
+                Alert.alert("Student Details Created Successfully");
+                // Navigate to Sectiondetails screen
+                navigation.navigate('Sectiondetails');
+            } else {
+                Alert.alert("Error in creating the student details");
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+    
 
     const data = [
         { label: 'LKG', value: '1' },
@@ -164,7 +211,7 @@ export default function Addstudent({navigation}) {
         getuserdata()
     }, [])
 
-        {/* <Text> Integration End </Text> */ }
+    {/* <Text> Integration End </Text> */ }
 
     return (
 
@@ -255,9 +302,9 @@ export default function Addstudent({navigation}) {
 
                     <View>
                         <Dropdown
-                    style={[styles.dropdown,{borderBottomColor: colors.text,borderColor: colors.text  }]}
-                    placeholderStyle={[styles.placeholderStyle,{color: colors.text}]}
-                    selectedTextStyle={[styles.selectedTextStyle,{color:  colors.text}]}
+                            style={[styles.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
+                            placeholderStyle={[styles.placeholderStyle, { color: colors.text }]}
+                            selectedTextStyle={[styles.selectedTextStyle, { color: colors.text }]}
                             inputSearchStyle={styles.inputSearchStyle}
                             iconStyle={styles.iconStyle}
                             data={branchdata}
@@ -281,9 +328,9 @@ export default function Addstudent({navigation}) {
 
                     <View>
                         <Dropdown
-                    style={[styles.dropdown,{borderBottomColor: colors.text,borderColor: colors.text  }]}
-                    placeholderStyle={[styles.placeholderStyle,{color: colors.text}]}
-                    selectedTextStyle={[styles.selectedTextStyle,{color:  colors.text}]}
+                            style={[styles.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
+                            placeholderStyle={[styles.placeholderStyle, { color: colors.text }]}
+                            selectedTextStyle={[styles.selectedTextStyle, { color: colors.text }]}
                             inputSearchStyle={styles.inputSearchStyle}
                             iconStyle={styles.iconStyle}
                             data={data}
@@ -307,9 +354,9 @@ export default function Addstudent({navigation}) {
 
                     <View>
                         <Dropdown
-                    style={[styles.dropdown,{borderBottomColor: colors.text,borderColor: colors.text  }]}
-                    placeholderStyle={[styles.placeholderStyle,{color: colors.text}]}
-                    selectedTextStyle={[styles.selectedTextStyle,{color:  colors.text}]}
+                            style={[styles.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
+                            placeholderStyle={[styles.placeholderStyle, { color: colors.text }]}
+                            selectedTextStyle={[styles.selectedTextStyle, { color: colors.text }]}
                             inputSearchStyle={styles.inputSearchStyle}
                             iconStyle={styles.iconStyle}
                             data={dataa}
@@ -349,7 +396,7 @@ export default function Addstudent({navigation}) {
 
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} multiline={true} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={addressdetails} value={address} placeholder='Address' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20, height: 200, justifyContent: 'center' }}></TextInput>
 
-                    <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }}onPress={ () => navigation.navigate('Sectiondetails')}>
+                    <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }} onPress={handleGetStarted2}>
                         ADD STUDENT
                     </Button >
 
