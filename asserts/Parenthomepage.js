@@ -82,7 +82,7 @@ export default function Parenthome({navigation}){;
 
                                 </Card>
 
-                                <Card style={{ width: "29%", height: 110, marginStart: 13 }}onPress={()=>navigation.navigate('Pendingleavedetails')}>
+                                <Card style={{ width: "29%", height: 110, marginStart: 13 }}onPress={()=>navigation.navigate('Parentleaveadd')}>
                                     <Icon name='account-arrow-left-outline' color={colors.bg} size={40} style={{ margin:5, justifyContent: 'center', alignSelf: 'center', height: 44 }}></Icon>
 
                                     <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Add Leave</Text>

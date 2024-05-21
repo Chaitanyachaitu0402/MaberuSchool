@@ -17,15 +17,15 @@ export default function Note({navigation}) {
 }
 
     const { colors } = useTheme()
-    const horizontalview = [{ date: '11-01-2023, 09:15 AM', description: 'School Anniversary ', text: '2days ago' }, {  date: '19-03-2023, 10:15AM', description: 'Pongal Holidays from sundat to saturday', text: '3days ago' }, {  date: '22-03-2023, 11:15AM', description: 'Childrens sport meet conducted in tuesday', text: '5days ago' }, {  date: '11-01-2023, 09:15 AM', description: 'Annual exams start from next weak ', text: '6days ago' },{  date: '11-01-2023, 09:15 AM', description: 'School Anniversary celebrations in next month', text: '2days ago' },{  date: '19-03-2023, 10:15AM', description: 'Summer  Holidays from May 1st to 13th june saturday', text: '3days ago' }]
+    const horizontalview = [{ date: '11-01-2023, 09:15 AM', description: 'School Anniversary celebrations in next month', text: '2days ago' }, {  date: '19-03-2023, 10:15AM', description: 'Pongal Holidays from sundat to saturday', text: '3days ago' }, {  date: '22-03-2023, 11:15AM', description: 'Childrens sport meet conducted in tuesday', text: '5days ago' }, {  date: '11-01-2023, 09:15 AM', description: 'Annual exams start from next weak ', text: '6days ago' },{  date: '11-01-2023, 09:15 AM', description: 'School Anniversary celebrations in next month', text: '2days ago' },{  date: '19-03-2023, 10:15AM', description: 'Summer  Holidays from May 1st to 13th june saturday', text: '3days ago' }]
     const appearance = (data, index) => {
       const isMenuVisible = visibleMenuIndex === index;
       
       return (
   
-        <Card style={{ width: '90%',  alignSelf: 'center', backgroundColor: 'white', marginTop: 14, padding: 5 }} onPress={home} >
+        <Card style={{ width: '95%',  alignSelf: 'center', backgroundColor: 'white', marginTop: 14, padding: 5 }} onPress={home} >
   
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 6,width:'90%' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 6 }}>
           <Text style={{ color: colors.text, fontSize: 16, fontWeight: 'bold', marginStart: 12, marginTop: 6 }}>{data.item.description} </Text>
             <Menu
             visible={isMenuVisible}

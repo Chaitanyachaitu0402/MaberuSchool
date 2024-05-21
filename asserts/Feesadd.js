@@ -21,7 +21,7 @@ export default function Feesadd({navigation}) {
 
                         </Card>
 
-                        <Card style={{ width: "40%", height: 140, marginStart: 13,backgroundColor:colors.background }}onPress={()=>navigation.navigate('Searchtype')}>
+                        <Card style={{ width: "40%", height: 140, marginStart: 13,backgroundColor:colors.background }}onPress={()=>navigation.navigate('Feesview')}>
                         <Icon name='cash-multiple' color={colors.bg} size={40} style={{ marginTop: 10, justifyContent: 'center', alignSelf: 'center', height: 44 }}></Icon>
                             <Text style={{ fontSize: 18, fontWeight: 'bold', alignSelf: 'center', marginTop: 13, color: colors.primary }}>Fees</Text>
                             <Text style={{ fontSize: 18, fontWeight: 'bold', alignSelf: 'center', marginTop: 5, color: colors.primary }}>payment</Text>

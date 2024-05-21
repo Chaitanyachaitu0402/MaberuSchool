@@ -1,7 +1,8 @@
 
-import { StyleSheet, View, Text, Image, Dimensions, ScrollView,Alert,TouchableOpacity,SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, Image, Dimensions, ScrollView,Alert,TouchableOpacity } from 'react-native';
 import { useTheme, Card, Button, TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState, useEffect } from 'react';
 import { Dropdown } from 'react-native-element-dropdown';
 import DatePicker from 'react-native-date-picker';
@@ -61,9 +62,7 @@ const AttendanceScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-      <View style={{backgroundColor:colors.primary,flex:1,}}>
+    <View style={{backgroundColor:colors.primary,flex:1,}}>
 
                      
 
@@ -72,14 +71,10 @@ const AttendanceScreen = ({navigation}) => {
 
 </View>
 
-<Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:10 }} onPress={()=>navigation.navigate('Attendancecard')}>
+<Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }} onPress={()=>navigation.navigate('Attendancecard')}>
                         ADD
                     </Button >
-                    
     </View>
-      </ScrollView>
-    </SafeAreaView>
-    
   );
 };
 

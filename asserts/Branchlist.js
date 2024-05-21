@@ -10,7 +10,8 @@ import Addbranch from './Addbranch';
 export default function Exampleshimmer ({ navigation }) {
   const [visibleMenuIndex, setVisibleMenuIndex] = useState(null);
 
-  
+  const openMenu = (index) => setVisibleMenuIndex(index);
+  const closeMenu = () => setVisibleMenuIndex(null);
   const home=()=>{
     navigation.navigate("Branchdetails")
 }
@@ -25,12 +26,21 @@ export default function Exampleshimmer ({ navigation }) {
     
     return (
       <Card
-        style={{backgroundColor: colors.background,width: '90%', height: 100,margin: 8,justifyContent: 'center',alignSelf:"center" ,  borderRadius: 7,}}>
+        style={{backgroundColor: colors.background,width: '90%', height: 100,margin: 8,justifyContent: 'center',borderRadius: 7,}}onPress={home}>
+            <View style={{flexDirection:'row',columnGap:5,justifyContent:'space-between'}}>
 
-        <Text style={{color:colors.primary, fontSize: 22, fontWeight: 'bold',textAlign: 'center',color:'#ffffff',marginStart:4,alignSelf:'center'}}>{data.item.title}</Text>
-       
+        <Text style={{color:colors.primary, fontSize: 22, fontWeight: 'bold',textAlign: 'center',color:'#ffffff',marginStart:4}}>{data.item.title}</Text>
+        {/* <Menu
+          visible={isMenuVisible}
+          onDismiss={closeMenu}
+          anchor={<Icon name='dots-vertical' size={26}  style={{ color:colors.primary,alignSelf:'center'}} onPress={() => openMenu(index)}></Icon>}>
+          <Menu.Item  title="Edit" onPress={()=>navigation.navigate('Editbranch')} />
+          <Menu.Item  title="Delete" />
+         
+        </Menu> */}
+        </View>
+
       </Card>
-
     );
   };
 
@@ -44,6 +54,7 @@ export default function Exampleshimmer ({ navigation }) {
       justifyContent: 'center',
       alignItems: 'center',}}>
         <View style={{}}>
+                   {/* <Button textColor={colors.primary} buttonColor={colors.primary} labelStyle={{ fontSize: 18, color: colors.bg,alignSelf:'center',fontWeight:'800' }} style={{ width: '66%', height: 39, borderColor: colors.background, borderRadius: 6, marginTop: 10,alignSelf:'center',borderWidth:2, }}onPress={()=>navigation.navigate(Addbranch)}> Add Branch</Button > */}
 
           <FlatList
             data={horizontalview5}

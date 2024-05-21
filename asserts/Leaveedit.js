@@ -13,7 +13,7 @@ export default function Leaveedit({ navigation }) {
     const { colors } = useTheme();
 
     const home = () => {
-        navigation.navigate("Teacherpendingleave")
+        navigation.navigate("schooldrawer")
     }
     const [leavedate, setleavedate] = useState(new Date())
     const [openn, setOpenn] = useState(false)
@@ -241,10 +241,9 @@ export default function Leaveedit({ navigation }) {
                     <View style={{ marginTop: 5, marginStart: 5 }}>
                         <TextInput textColor={colors.text} placeholderTextColor={colors.text} multiline={true} value={Reason} onChangeText={setReasondetails} style={{ marginTop: 8, width: '87%', minHeight: 100, borderColor: colors.background, borderWidth: 1, backgroundColor: colors.primary, alignSelf: 'center', }}></TextInput>
                     </View>
-
-                    <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:10 }} onPress={home}>
-                        UPDATE
-                    </Button >
+                    <View style={{ marginTop: 11 }}>
+                        <Button style={{ width: "43%", height: 48, backgroundColor: colors.bg, alignSelf: 'center' }} labelStyle={{ fontSize: 18, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center', marginTop: 16, color: colors.primary }} onPress={home}>Update Leave</Button>
+                    </View>
 
                 </View>
             </ScrollView>

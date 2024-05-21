@@ -140,13 +140,10 @@ export default function Teacherworkcreate({navigation}) {
                         <View style={{height:7}}>
 
                         </View>
-                        {/* <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 15, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }}onPress={ () => navigation.navigate('Teacherhomeworklist')}>
+                        <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 15, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }}onPress={ () => navigation.navigate('Teacherhomeworklist')}>
                         ADD HOMEWORK
-                    </Button > */}
-
-<Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 50, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }}onPress={ () => navigation.navigate('Teacherhomeworklist')}>
-                        ADD 
                     </Button >
+
                     </View>
 
                 

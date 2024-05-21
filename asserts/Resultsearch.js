@@ -63,10 +63,6 @@ export default function Resultsearch({navigation}) {
   
 
   return (
-<SafeAreaView>
-    <ScrollView>
-
-   
     <View style={{flex:1,backgroundColor:colors.primary}}>
       <View>
                 <Dropdown
@@ -130,8 +126,7 @@ export default function Resultsearch({navigation}) {
 
 
   </View>
-  </ScrollView>
-</SafeAreaView> 
+    
   )
 }
 const styles = StyleSheet.create({

@@ -11,7 +11,7 @@ export default function Parentleaveedit({navigation}) {
     const { colors } = useTheme();
     const [classes, setclasses] = useState(null);
     const home=()=>{
-        navigation.navigate("Pendingleavedetails")
+        navigation.navigate("schooldrawer4")
     }
     const [section, setsections] = useState(null);
     const data1 = [

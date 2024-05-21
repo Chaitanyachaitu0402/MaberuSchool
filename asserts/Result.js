@@ -42,7 +42,7 @@
 // }
 
 import React, { useState, useEffect } from 'react';
- import { View, Text, StyleSheet, FlatList, Dimensions,Image, SafeAreaView, ScrollView } from 'react-native';
+ import { View, Text, StyleSheet, FlatList, Dimensions,Image } from 'react-native';
 import { Card, useTheme, Button, Menu ,TextInput} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
@@ -60,10 +60,6 @@ const Table = ({navigation}) => {
   ]
     const{colors}=useTheme();
   return (
-    <SafeAreaView>
-      <ScrollView>
-
-     
     <View style={{margin:5,backgroundColor:colors.primary,flex:1}}> 
                     <Image source={require("./Image/School.jpg")} style={{ width: "30%", height: 99, marginStart: 5, alignSelf: 'center', margin: 6 }}></Image>
 
@@ -75,28 +71,28 @@ const Table = ({navigation}) => {
       <Text style={{fontSize:16,color:colors.background,fontWeight:'bold',alignSelf:'center'}}>Class:II</Text>
       </View>
 
-      <View >
-                    <Dropdown
-                        style={style.dropdown}
-                        placeholderStyle={style.placeholderStyle}
-                        selectedTextStyle={style.selectedTextStyle}
-                        inputSearchStyle={style.inputSearchStyle}
-                        // iconStyle={styles.iconStyle}
-                        data={data1}
-                        search
-                        maxHeight={400}
-                        labelField="label"
-                        valueField="value"
-                        placeholder="Exam Type"
-                        searchPlaceholder="Search..."
-                        value={classvalue}
-                        onChange={item => {
-                          setclassvalue(item.value);
-                        }}
+      <View>
+                       <Dropdown
+                          style={[styles.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
+                          placeholderStyle={[styles.placeholderStyle, { color: colors.text }]}
+                          selectedTextStyle={[styles.selectedTextStyle, { color: colors.text }]}
 
-                    />
-                </View>
-
+                           inputSearchStyle={styles.inputSearchStyle}
+                           iconStyle={styles.iconStyle}
+                           data={data1}
+                           search
+                           maxHeight={400}
+                           labelField="label"
+                           valueField="value"
+                           placeholder="Select exam type"
+                           searchPlaceholder="Search..."
+                           value={classvalue}
+                           onChange={item => {
+                               setclassvalue(item.value);
+                           }}
+                           
+                       />
+                   </View>
     <View style={{ flexDirection: 'column',borderWidth: 1 ,  borderColor: 'black',margin: 8,borderRadius:5}}>
         
       <View style={{flexDirection: 'row',justifyContent: 'space-between',borderBottomWidth: 1, borderBottomColor: 'black', height: 57,backgroundColor:colors.bg}}>
@@ -152,48 +148,45 @@ const Table = ({navigation}) => {
 
     </View>
     </View>
-    </ScrollView>
-    </SafeAreaView>
+
   );
 };
 const style = StyleSheet.create({
+
   dropdown: {
 
       width: '87%',
       borderBottomColor: 'black',
-      borderBottomWidth: 0.7,
+      borderBottomWidth: 0.5,
       borderColor: 'black',
       borderWidth: 1,
       justifyContent: 'center',
       alignSelf: 'center',
       height: 57,
-      marginTop: 12, backgroundColor: '#ffffff'
+      marginTop: 20
   },
-  icon: {
-      margin: 10,
-
-
-  },
+ 
   placeholderStyle: {
       fontSize: 16,
       height: 20,
       color: 'black',
       alignSelf: 'center',
-      justifyContent: 'center', marginStart: 5,
+      justifyContent: 'center',margin:6
   },
   selectedTextStyle: {
       fontSize: 16,
-      color: 'black',
-      marginStart: 6, fontWeight: '500'
-  },
+      color: '#000000',columnGap:7,margin:7,width:'88%',alignSelf:'center'
 
+  },
+  iconStyle: {
+      width: 20,
+      height: 20,
+  },
   inputSearchStyle: {
       height: 40,
       fontSize: 16,
-  },
+ },
 });
-
-
 const styles = StyleSheet.create({
   container: {
    

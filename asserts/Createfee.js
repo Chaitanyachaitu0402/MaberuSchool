@@ -67,19 +67,12 @@ export default function Createfee({navigation}) {
         setstationary(name)
         console.log(name);
     }
-    const [id, setid] = useState("")
-    const iddetails = (name) => {
-        setid(name)
-        console.log(name);
-    }
     return (
         <SafeAreaView>
             <ScrollView>
 
-                <View style={{ flex: 1, backgroundColor: colors.primary, }}>
+                <View style={{ flex: 1, backgroundColor: colors.primary, height: Dimensions.get('window').height }}>
                     <View>
-                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={iddetails} value={id} placeholder='Registration ID' style={{ fontSize: 18, width: '90%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
-
                         <Dropdown
                             style={[styles.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
                             placeholderStyle={[styles.placeholderStyle, { color: colors.text }]}

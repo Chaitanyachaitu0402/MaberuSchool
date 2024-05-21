@@ -155,8 +155,7 @@ const Exampletoogle = ({ navigation }) => {
 
                  
 
-                     <View style={{ flexDirection: 'row', width: "96%", alignSelf: 'center', justifyContent: 'center', columnGap: 8, marginStart: 3 }}>
-                        
+<View style={{ flexDirection: 'row', width: "96%", alignSelf: 'center', justifyContent: 'center', columnGap: 8, marginStart: 3 }}>
                         <Card style={{ width: "29%", height: 110 }} onPress={() => navigation.navigate('Classlist')}>
                         <Icon name='account-group-outline' color={colors.bg} size={40} style={{ marginTop: 7, justifyContent: 'center', alignSelf: 'center', height: 44 }}></Icon>
                             <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Class</Text>
@@ -178,6 +177,8 @@ const Exampletoogle = ({ navigation }) => {
 
                     </View>
                     
+
+
                 </View>
 
 

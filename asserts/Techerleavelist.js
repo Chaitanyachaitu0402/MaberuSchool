@@ -26,7 +26,7 @@ export default function Techerleavelist({navigation}) {
                 case 'Rejected':
                   return <Text style={{ color: "#ff0000", fontWeight: 'bold',fontSize:17 }}>Rejected</Text>;
                 case 'Pending':
-                  return <Text style={{ color: "#FB9D2F", fontWeight: 'bold',fontSize:17}}>Pending</Text>;
+                  return <Text style={{ color: "#FB9D2F", fontWeight: 'bold',fontSize:17}}onPress={()=>navigation.navigate('Teacherpendingleave')}>Pending</Text>;
                 default:
                   return <Text style={{ color: "#000000", fontWeight: 'bold',fontSize:17 }}></Text>;
 

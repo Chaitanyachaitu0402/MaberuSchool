@@ -10,6 +10,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 
+
+
 import Login from './asserts/Login';
 import Forgot from './asserts/Forgot';
 import Logout from './asserts/Logout';
@@ -119,7 +121,6 @@ import Directorsendnotice from './asserts/Directorsendnotice';
 import Principalnoticelist from './asserts/Principalnoticelist';
 import Attendancecard from './asserts/Attendancecard';
 import Attendancecard2 from './asserts/Attendancecard2';
-import Searchtype  from './asserts/Searchtype';
 
 import Allteachers from './asserts/Allteachers';
 
@@ -151,14 +152,14 @@ export default function App() {
         <stack.Screen name='Onboard' component={Onboard} options={{ headerShown: false}}></stack.Screen>
         <stack.Screen name='Login' component={Login} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Forgot' component={Forgot} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Addclass' component={Addclass} options={{ headerShown: true }}></stack.Screen>
-        <stack.Screen name='Editclass' component={Editclass} options={{ headerShown: true }}></stack.Screen>
-        <stack.Screen name='Addstudent' component={Addstudent} options={{ headerShown: true}}></stack.Screen>
-        <stack.Screen name='Editstudent' component={Editstudent} options={{ headerShown: true }}></stack.Screen>
-        <stack.Screen name='Addsection' component={Addsection} options={{ headerShown: true}}></stack.Screen>
-        <stack.Screen name='Editsection' component={Editsection} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Addclass' component={Addclass} options={{ headerShown: false }}></stack.Screen>
+        <stack.Screen name='Editclass' component={Editclass} options={{ headerShown: false }}></stack.Screen>
+        <stack.Screen name='Addstudent' component={Addstudent} options={{ headerShown: false }}></stack.Screen>
+        <stack.Screen name='Editstudent' component={Editstudent} options={{ headerShown: false }}></stack.Screen>
+        <stack.Screen name='Addsection' component={Addsection} options={{ headerShown: false }}></stack.Screen>
+        <stack.Screen name='Editsection' component={Editsection} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Menubar' component={Menubar} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Editteacher' component={Editteacher} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Editteacher' component={Editteacher} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Addbranch' component={Addbranch} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Editbranch' component={Editbranch} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Profile' component={Profile} options={{ headerShown: false }}></stack.Screen>
@@ -247,7 +248,6 @@ export default function App() {
         <stack.Screen name='Staffattendancecreates' component={Staffattendancecreates} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Attendancecard' component={Attendancecard} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Attendancecard2' component={Attendancecard2} options={{ headerShown: true }}></stack.Screen>
-        <stack.Screen name='Searchtype' component={Searchtype} options={{ headerShown: true }}></stack.Screen>
 
         <stack.Screen name='Techerleavelist' component={Techerleavelist} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Staffaddnotice' component={Staffaddnotice} options={{ headerShown: true }}></stack.Screen>
@@ -284,8 +284,6 @@ export default function App() {
         })}
       />
 
-
-{/* 
       <stack.Screen 
         name='Teacherlist' 
         component={Teacherlist} 
@@ -310,9 +308,7 @@ export default function App() {
             />
           ),
         })}
-      /> */}
-
-
+      />
         <stack.Screen 
         name='Allteachers' 
         component={Allteachers} 
@@ -338,7 +334,6 @@ export default function App() {
           ),
         })}
       />
-
   <stack.Screen 
         name='Otherstafflist' 
         component={Otherstafflist} 
@@ -364,7 +359,28 @@ export default function App() {
           ),
         })}
       />
+{/* <stack.Screen 
+  name='Otherstafflist' 
+  component={Otherstafflist} 
+  options={({ navigation }) => ({
+    title: 'Nonteaching staff', // Set the title of the header
+    headerStyle: {
+      backgroundColor: colors.background, // Change the background color if needed
+    },
+    headerTintColor: colors.primary, // Change the text color of the header
+    headerTitleStyle: {
+      fontWeight: 'bold', // Adjust the title font weight
+      fontSize: 20 , // Adjust the title font size
+    },
+    headerTitleAlign: 'center', // Align the title to the center
+    headerRight: () => (
+      <TouchableOpacity onPress={() => navigation.navigate('Addotherstaff')}>
+                          <Image source={require("./Image/boy.jpeg")} style={{ width: '22%', height: 90, alignSelf: 'center', justifyContent: 'center', borderRadius: 88, marginStart: 7, marginTop: 8 }} ></Image>
 
+      </TouchableOpacity>
+    ),
+  })}
+/> */}
 
 <stack.Screen 
         name='Event' 
@@ -419,7 +435,17 @@ export const DrawStacks = () => {
        
 
 
-
+ {/* <Drawstack.Screen name="Directorsendnotice" component={Directorsendnotice}
+        options={{
+           title: 'Notice',
+            drawerIcon: ({ size}) => (
+              <Icon
+                 name="bell-outline"
+                 size={30}
+                 color={colors.background} 
+              />
+           ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
+        }}/>       */}
         
  <Drawstack.Screen name="Leavesections" component={Leavesections}
         options={{
@@ -525,7 +551,7 @@ export const DrawStack2 = () => {
        
      
   
-       <Drawstack.Screen name="Note" component={Note}
+       <Drawstack.Screen name="Notice" component={Note}
         options={({ navigation }) => ({
           title: 'Notice Send',
             drawerIcon: ({ size}) => (
@@ -873,9 +899,9 @@ export const DrawStack5 = () => {
               />
            ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
         }}/>  
-      <Drawstack.Screen name="Techerleavelist" component={Techerleavelist}
+      <Drawstack.Screen name="Adminsendleave" component={Adminsendleave}
         options={{
-           title: 'Leave Response',
+           title: 'Add Leave',
             drawerIcon: ({ size}) => (
               <Icon
                  name="account-arrow-left-outline"
@@ -888,6 +914,9 @@ export const DrawStack5 = () => {
         }}/> 
       
 
+            
+      
+      
          <Drawstack.Screen name="Profile" component={Profile}
         options={{
            title: 'Profile',
@@ -912,7 +941,7 @@ export const Bottomstack4 = () => {
   return (
     <schoolbotstack.Navigator >
         <schoolbotstack.Screen name='Schooldrawer5' component={DrawStack5} options={{
-        title: 'systemadmin',
+        title: 'sytemadmin',
         headerShown: false,
         tabBarIcon: ({ focused }) => (
           <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
@@ -956,13 +985,6 @@ export const Bottomstack4 = () => {
         ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
       }} />    
 
-<schoolbotstack.Screen name='Branchlist' component={Branchlist} options={{
-        title: 'Searchtype',
-        headerShown: false,
-        tabBarIcon: ({ focused }) => (
-          <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
-        ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
-      }} />  
     </schoolbotstack.Navigator>
   )  
 }

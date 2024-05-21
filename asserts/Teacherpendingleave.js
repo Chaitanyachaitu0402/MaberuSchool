@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Dimensions, TouchableOpacity } from 'react-native';
-import { useTheme, Card, Menu,Button } from 'react-native-paper';
+import { useTheme, Card, Menu } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -13,8 +13,6 @@ export default function Leavedetail({navigation}) {
     return (
         <SafeAreaView>
             <View style={{ flex: 1, backgroundColor: colors.b, height: Dimensions.get('window').height }}>
-
-         <Button textColor={colors.primary} buttonColor={colors.primary} labelStyle={{ fontSize: 16, color: colors.bg,alignSelf:'center' }} style={{ width: '55%', height: 39, borderColor: colors.background, borderRadius: 6,alignSelf:'center',borderWidth:2,margin:10, }}onPress={()=>navigation.navigate('Adminsendleave')}>    Add Leave  </Button >
 
                
                 <Card style={{ width: '95%', alignSelf: 'center', backgroundColor: colors.primary, marginTop: 14, padding: 8, height: 220 }}>

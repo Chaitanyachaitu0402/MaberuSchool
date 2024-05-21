@@ -59,8 +59,8 @@ export default function Classlist({navigation}){
 
   return (
     
-    <View style={{flex:1,left:8}}>
-         <Button textColor={colors.primary} buttonColor={colors.primary} labelStyle={{ fontSize: 16, color: colors.bg,alignSelf:'center' }} style={{ width: '55%', height: 39, borderColor: colors.background, borderRadius: 6,alignSelf:'center',borderWidth:2,margin:10, }}onPress={()=>navigation.navigate(Addclass)}>    Add Class  </Button >
+    <View style={{flex:1}}>
+         <Button textColor={colors.primary} buttonColor={colors.primary} labelStyle={{ fontSize: 16, color: colors.bg,alignSelf:'center' }} style={{ width: '55%', height: 39, borderColor: colors.background, borderRadius: 6, marginTop: 10,alignSelf:'center',borderWidth:2 }}onPress={()=>navigation.navigate(Addclass)}>    Add Class  </Button >
 
           <FlatList
             data={horizontalview5}
