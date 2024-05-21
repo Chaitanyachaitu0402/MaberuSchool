@@ -28,6 +28,40 @@ export default function Addclass({navigation}) {
     setrefreshToken(refreshtoken);
   }
 
+
+  const handleGetStarted2 = async () => {
+          try {
+              const response = await fetch('http://10.0.2.2:3000/class/create_class', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                      class_Name: classname,
+                  }),
+                  headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json',
+                  },
+              });
+
+              console.log("done2", response)
+              if (!response.ok) {
+                  throw new Error('Failed to details. Status: ' + response.status);
+              }
+              const data = await response.json();
+              console.log("Student details created ===> ", data)
+              if (data.success) {
+                  // Show alert box
+                  Alert.alert("New Class Created Successfully");
+                  // Navigate to Sectiondetails screen
+                  navigation.navigate('Classlist');
+              } else {
+                  Alert.alert("Error in creating the student details");
+              }
+          } catch (error) {
+              console.error('Error fetching data:', error);
+          }
+      };
+
+
   const Addclass = async () => {
     try {
       const classresponse = await fetch("https://localhost.com:3000/create-class", {
@@ -85,7 +119,7 @@ export default function Addclass({navigation}) {
 
       <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={classnamedetails} value={classname} placeholder='Class Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }} left={<TextInput.Icon icon={'account'} > </TextInput.Icon>}></TextInput>
 
-      <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.background, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 40 }} onPress={home}>
+      <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.background, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 40 }} onPress={handleGetStarted2}>
         ADD 
       </Button >
 

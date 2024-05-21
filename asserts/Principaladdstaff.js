@@ -32,6 +32,51 @@ const Addteacher = ({navigation}) => {
        </View>
      );
    };
+
+   const handleGetStarted2 = async () => {
+               try {
+                   const response = await fetch('http://10.0.2.2:3000/employees/create-employee', {
+                       method: 'POST',
+                       body: JSON.stringify({
+                           First_Name: name,
+                           gender: gender,
+                           Date_of_Birth:birthdate,
+                           Section_Name:sectionname,
+                           Mother_Name:mothername,
+                           Father_Name:fathername,
+                           Mobile_Number:mobilenumber,
+                           EmergencyContact:relationmobilenumber,
+                           Address:address,
+//                           Subject_Name:selected,
+                           Class_Name:classvalue,
+                           Role_Name:teacherRolevalue,
+                       }),
+                       headers: {
+                           'Accept': 'application/json',
+                           'Content-Type': 'application/json',
+                       },
+                   });
+
+                   console.log("done2", response)
+                   if (!response.ok) {
+                       throw new Error('Failed to details. Status: ' + response.status);
+                   }
+                   const data = await response.json();
+                   console.log("Student details created ===> ", data)
+                   if (data.success) {
+                       // Show alert box
+                       Alert.alert("Student Details Created Successfully");
+                       // Navigate to Sectiondetails screen
+                       navigation.navigate('Allteachers');
+                   } else {
+                       Alert.alert("Error in creating the student details");
+                   }
+               } catch (error) {
+                   console.error('Error fetching data:', error);
+               }
+           };
+
+
     const dataa = [
 
         { label: 'Teacher', value: '1' },
@@ -279,7 +324,7 @@ const Addteacher = ({navigation}) => {
      onChange={item => {
        setSelected(item);
      }}
-     
+
      renderItem={renderItem}
      renderSelectedItem={(item, unSelect) => (
        <TouchableOpacity onPress={() => unSelect && unSelect(item)}>
@@ -358,7 +403,7 @@ const Addteacher = ({navigation}) => {
 
                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} multiline={true} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={addressdetails} value={address} placeholder='Address' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20, height: 200, justifyContent: 'center' }}></TextInput>
 
-                   <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }} onPress={home}>
+                   <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }} onPress={handleGetStarted2}>
                        ADD TEACHER
                    </Button >
 

@@ -32,6 +32,53 @@ const Addteacher = ({navigation}) => {
         </View>
       );
     };
+
+    const handleGetStarted2 = async () => {
+            try {
+                const response = await fetch('http://10.0.2.2:3000/employees/create-employee', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        First_Name: name,
+                        gender: gender,
+                        Date_of_Birth:birthdate,
+//                        Admission_id:admission,
+//                        Joining_date:joindate,
+//                        Mother_Name:mothername,
+//                        Mother_Occupation:motheroccupation,
+//                        Father_Name:fathername,
+//                        Father_Occupation:fatheroccupation,
+//                        MobileNumber:mobilenumber,
+                        EmergencyContact:relationmobilenumber,
+//                        Present_Address:address,
+//                        Branch:Branchvalue,
+//                        Class:Classvalue,
+//                        Section:Sectionvalue,
+                    }),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                console.log("done2", response)
+                if (!response.ok) {
+                    throw new Error('Failed to details. Status: ' + response.status);
+                }
+                const data = await response.json();
+                console.log("Student details created ===> ", data)
+                if (data.success) {
+                    // Show alert box
+                    Alert.alert("Student Details Created Successfully");
+                    // Navigate to Sectiondetails screen
+                    navigation.navigate('Teacherlist');
+                } else {
+                    Alert.alert("Error in creating the student details");
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
      const dataa = [
         { label: 'Principal', value: '1' },
 
@@ -359,7 +406,7 @@ const Addteacher = ({navigation}) => {
 
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} multiline={true} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={addressdetails} value={address} placeholder='Address' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20, height: 200, justifyContent: 'center' }}></TextInput>
 
-                    <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }} onPress={home}>
+                    <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }} onPress={handleGetStarted2}>
                         ADD TEACHER
                     </Button >
 
