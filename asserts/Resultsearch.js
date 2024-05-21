@@ -63,7 +63,6 @@ export default function Resultsearch({navigation}) {
   
 
   return (
-
     <View style={{flex:1,backgroundColor:colors.primary}}>
       <View>
                 <Dropdown

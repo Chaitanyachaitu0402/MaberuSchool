@@ -22,6 +22,22 @@ export default function Administration({ navigation }) {
     </View>
   );
 
+    return (
+
+        <ScrollView>
+
+            <View style={{ flex: 1, backgroundColor: colors.primary, height: Dimensions.get('window').height }} >
+
+
+                <View style={{ width: '100%', backgroundColor: colors.background, flexDirection: 'row', columnGap: 14, height: 150 }}>
+
+                    <Image source={require("./Image/nonteach.jpg")} style={{ width: '22%', height: 90, alignSelf: 'center', justifyContent: 'center', borderRadius: 88, marginStart: 7, marginTop: 8 }} ></Image>
+                    <View style={{ marginTop: 12 }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: colors.primary, marginTop: 26 }}>M.Nagoor Jyothi prasana</Text>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: colors.primary, marginTop: 12 }}>nagoor1123@gmail.com</Text>
+                    </View>
+
+                </View>
   return (
     <ScrollView>
       {loading ? (
