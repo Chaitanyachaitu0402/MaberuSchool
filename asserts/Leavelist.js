@@ -19,7 +19,7 @@ const ApprovalMenuFlatList = ({navigation}) => {
             <Card style={{ width: '95%', alignSelf: 'center', backgroundColor: colors.primary, marginTop: 14, padding: 8 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between',margin:7  }}>
                     <Text style={{ color: colors.text, fontSize: 19, fontWeight: 'bold',   }}>{data.item.text} </Text>
-                    <Text style={{ color: colors.primary, fontSize: 19, fontWeight: 'bold',  backgroundColor:'#4146B5',padding:10,borderRadius: 10   }}onPress={()=>navigation.navigate('Leavedetail')}>{data.item.view} </Text>
+                    <Text style={{ color: colors.primary, fontSize: 19, fontWeight: 'bold',  backgroundColor:'#1c1c84',padding:10,borderRadius: 10   }}onPress={()=>navigation.navigate('Leavedetail')}>{data.item.view} </Text>
                 </View>
 <View style={{padding:7}}>
 

@@ -7,45 +7,11 @@ import { useTheme, Card, Menu } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 
-const ApprovalMenu = () => {
-    const { colors } = useTheme();
-    const [visible, setVisible] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('Pending');
 
-    const openMenu = () => setVisible(true);
-    const closeMenu = () => setVisible(false);
-
-    const handleOptionSelect = (option) => {
-        setSelectedOption(option);
-        setVisible(false);
-    };
-
-    return (
-        <View>
-            <TouchableOpacity onPress={openMenu}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ color: selectedOption === 'Approved' ? 'green' : selectedOption === 'Rejected' ? 'red' : selectedOption === 'Pending' ? 'black' : colors.text }}>
-                        {selectedOption}
-                    </Text>
-                    <Icon name='chevron-down' color={colors.text} size={24} />
-                </View>
-            </TouchableOpacity>
-            <Menu
-                visible={visible}
-                onDismiss={closeMenu}
-                anchor={<Text onPress={openMenu} style={{ color: colors.text }}></Text>}
-            >
-                <Menu.Item onPress={() => handleOptionSelect('Approved')} title="Approved" titleStyle={{ color: 'green' }}/>
-                <Menu.Item onPress={() => handleOptionSelect('Rejected')} title="Rejected" titleStyle={{ color: 'red' }} />
-                <Menu.Item onPress={() => handleOptionSelect('Pending')} title="Pending" titleStyle={{ color: 'black' }} />
-            </Menu>
-        </View>
-    );
-};
 
 const Studentleaverequest = ({navigation}) => {
     const { colors } = useTheme();
-   const horizontalview = [{ date: '11-01-2023, 09:15 AM', description: 'Lorem ipsum dolor st amet,consecttetur adipiscing elit,sed to eiusmod tempor incididunt ut labore et dolore magna aliqua ', text: 'Casual Leave', employe: 'id: 1224 ', name: 'Name: kotla.Ramadevi',class:'Class: V',section:'Section: A', }, { date: '13-01-2023, 11:15 AM', description: 'Lorem ipsum dolor st amet,consecttetur adipiscing elit,sed to eiusmod tempor incididunt ut labore et dolore magna aliqua ', text: 'Medical Leave', employe: 'id: 3334 ', name: 'Name: Varahi.Ravukumar',class:'Class: IX',section:'Section: B' }, { date: '16-03-2023, 11:15 AM', description: 'Lorem ipsum dolor st amet,consecttetur adipiscing elit,sed to eiusmod tempor incididunt ut labore et dolore magna aliqua ', text: 'Casual Leave', employe: 'id: 8769 ', name: 'Name: Deva.Prathiba',class:'Class: IV',section:'Section: A' },{ date: '16-03-2023, 11:15 AM', description: 'Lorem ipsum dolor st amet,consecttetur adipiscing elit,sed to eiusmod tempor incididunt ut labore et dolore magna aliqua ', text: 'Casual Leave', employe: 'id: 8769 ', name: 'Name: Deva.Prathiba',class:'Class: III',section:'Section: B' }]
+   const horizontalview = [{ date: '11-01-2023, 09:15 AM', description: 'Lorem ipsum dolor st amet,consecttetur adipiscing elit,sed to eiusmod tempor incididunt ut labore et dolore magna aliqua ', text: 'Casual Leave', employe: 'id: 1224 ', name: 'Name: kotla.Ramadevi',class:'Class: V',section:'Section: A',view:'View' }, { date: '13-01-2023, 11:15 AM', description: 'Lorem ipsum dolor st amet,consecttetur adipiscing elit,sed to eiusmod tempor incididunt ut labore et dolore magna aliqua ', text: 'Medical Leave', employe: 'id: 3334 ', name: 'Name: Varahi.Ravukumar',class:'Class: IX',section:'Section: B',view:'View' }, { date: '16-03-2023, 11:15 AM', description: 'Lorem ipsum dolor st amet,consecttetur adipiscing elit,sed to eiusmod tempor incididunt ut labore et dolore magna aliqua ', text: 'Casual Leave', employe: 'id: 8769 ', name: 'Name: Deva.Prathiba',class:'Class: IV',section:'Section: A',view:'View' },{ date: '16-03-2023, 11:15 AM', description: 'Lorem ipsum dolor st amet,consecttetur adipiscing elit,sed to eiusmod tempor incididunt ut labore et dolore magna aliqua ', text: 'Casual Leave', employe: 'id: 8769 ', name: 'Name: Deva.Prathiba',class:'Class: III',section:'Section: B',view:'View' }]
 
 
     const apperancce = (data) => {
@@ -53,7 +19,7 @@ const Studentleaverequest = ({navigation}) => {
             <Card style={{ width: '95%', alignSelf: 'center', backgroundColor: colors.primary, marginTop: 14, padding: 8 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between',margin:7  }}>
                     <Text style={{ color: colors.text, fontSize: 19, fontWeight: 'bold', }}>{data.item.text} </Text>
-                    <ApprovalMenu initialOption="Pending" />
+                    <Text style={{ color: colors.primary, fontSize: 19, fontWeight: 'bold',  backgroundColor:'#1c1c84',padding:10,borderRadius: 10   }}onPress={()=>navigation.navigate('Leavedetail')}>{data.item.view} </Text>
                 </View>
                 <View style={{padding:7}}>
 
