@@ -14,7 +14,7 @@ export default function Note({navigation}) {
 }
 
     const { colors } = useTheme()
-    const horizontalview = [{ name: 'principal', date: '11-01-2023, 09:15 AM', description: 'School Anniversary celebrations in next month', text: '2days ago' }, { name: 'principal', date: '19-03-2023, 10:15AM', description: 'Pongal Holidays from sundat to saturday', text: '3days ago' }, { name: 'principal', date: '22-03-2023, 11:15AM', description: 'Childrens sport meet conducted in tuesday', text: '5days ago' }, { name: 'principal', date: '11-01-2023, 09:15 AM', description: 'Annual exams start from next weak ', text: '6days ago' },{ name: 'principal', date: '11-01-2023, 09:15 AM', description: 'School Anniversary celebrations in next month', text: '2days ago' }]
+    const horizontalview = [{ name: 'principal', date: '11-01-2023, 09:15 AM', description: 'School Anniversary celebrations in next month', text: '2days ago' }, { name: 'principal', date: '19-03-2023, 10:15AM', description: 'Pongal Holidays from monday to saturday', text: '3days ago' }, { name: 'principal', date: '22-03-2023, 11:15AM', description: 'Childrens sport meet conducted in tuesday', text: '5days ago' }, { name: 'principal', date: '11-01-2023, 09:15 AM', description: 'Annual exams start from next weak ', text: '6days ago' },{ name: 'principal', date: '11-01-2023, 09:15 AM', description: 'School Anniversary celebrations in next month', text: '2days ago' }]
     const apperancce = (data) => {
       
 
@@ -24,11 +24,11 @@ export default function Note({navigation}) {
         <Card style={{ width: '95%',  alignSelf: 'center', backgroundColor: 'white', marginTop: 14, padding: 5 }} onPress={home} >
   
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 6 }}>
-            <Text style={{ color: colors.background, fontSize: 18, fontWeight: 'bold', marginStart: 9, marginTop: 5 }}>{data.item.name} </Text>
+            <Text style={{ color: colors.background, fontSize: 16, fontWeight: 'bold', marginStart: 9, marginTop: 5 }}>{data.item.name} </Text>
          
           </View>
   
-          <Text style={{ color: colors.text, fontSize: 16, fontWeight: 'bold', marginStart: 12, marginTop: 6 }}>{data.item.description} </Text>
+          <Text style={{ color: colors.text, fontSize: 14, fontWeight: 'bold', marginStart: 12, marginTop: 6 }}>{data.item.description} </Text>
           <Text style={{ color: colors.text, fontSize: 14, fontWeight: 'normal', marginStart: 12, marginTop: 17 }}>{data.item.date} </Text>
   
           <View style={{ flexDirection: 'row', alignSelf: 'flex-end', columnGap: 4, marginRight: 3 }}>

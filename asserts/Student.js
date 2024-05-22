@@ -14,7 +14,7 @@ export default function Student({navigation}) {
 
                 <View style={{ flex: 1, backgroundColor: colors.primary, height: Dimensions.get('window').height, }}>
 
-                    <View style={{ width: '90%', backgroundColor: colors.background, columnGap: 14, height: 270, alignSelf: 'center', margin: 7, borderRadius: 9 }}>
+                    <View style={{ width: '90%', backgroundColor: colors.background, columnGap: 14, height: 290, alignSelf: 'center', margin: 7, borderRadius: 9 }}>
                         <View style={{flexDirection:'row',justifyContent:'flex-end',margin:6}}>
                         <Text style={{ fontSize: 22, fontWeight: 'bold', color: colors.primary, margin: 5, alignSelf: 'center', justifyContent: 'center' }}onPress={()=>navigation.navigate('Studentedit')}> Edit</Text>
 

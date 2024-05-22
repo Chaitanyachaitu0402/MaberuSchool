@@ -37,14 +37,14 @@ export default function ({ navigation }) {
                                 <Text style={{ fontSize: 15, fontWeight: 'bold', color: colors.primary, marginTop: 12 }}>year of service:3</Text>
                             </View>
                         </View>
-                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: colors.text, marginTop: 16, marginStart: 8 }}>Information List</Text>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: colors.text, marginTop: 16, marginStart: 8 }}>Information List</Text>
                         <View style={{ flexDirection: 'row', margin: 8, width: "96%", alignSelf: 'center', justifyContent: 'center', columnGap: 10 }}>
                             <Card style={{ width: "40%", height: 110, marginStart: 8 }} onPress={() => handleCardPress('Classlist')}>
                                 <Icon name='school-outline' color={colors.bg} size={50} style={styles.cardIcon}></Icon>
                                 <Text style={styles.cardText}>Student List</Text>
                             </Card>
                         </View>
-                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: colors.text, marginTop: 17, marginStart: 14, left: 6 }}>Academic Updates</Text>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: colors.text, marginTop: 17, marginStart: 14, left: 6 }}>Academic Updates</Text>
                         <View style={{ flexDirection: 'row', margin: 8, width: "96%", alignSelf: 'center', justifyContent: 'center', columnGap: 3, marginStart: 3 }}>
                             <Card style={{ width: "29%", height: 110 }} onPress={() => handleCardPress('Teacherhomeworklist')}>
                                 <Icon name='note-text-outline' color={colors.bg} size={40} style={styles.cardIcon}></Icon>
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         height: 44,
     },
     cardText: {
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: 'bold',
         alignSelf: 'center',
         color: '#000',

@@ -355,27 +355,34 @@ const ExamTimetableApp = () => {
       <Text style={styles.title}>Exam Timetable</Text>
       <View style={styles.inputContainer}>
         <TextInput
-          style={[styles.input,{borderColor:colors.text}]}
+          style={[styles.input,{borderColor:colors.text,}]}
           placeholder="Exam Name"
           value={examName}
+          placeholderTextColor={'#000000'}
           onChangeText={text => setExamName(text)}
         />
         <TextInput
           style={[styles.input,{borderColor:colors.text}]}
           placeholder="Exam Date"
           value={examDate}
+          placeholderTextColor={'#000000'}
+
           onChangeText={text => setExamDate(text)}
         />
         <TextInput
           style={[styles.input,{borderColor:colors.text}]}
           placeholder="Exam Time"
           value={examTime}
+          placeholderTextColor={'#000000'}
+
           onChangeText={text => setExamTime(text)}
         />
         <TextInput
           style={[styles.input,{borderColor:colors.text}]}
           placeholder="Exam Day"
           value={examDay}
+          placeholderTextColor={'#000000'}
+
           onChangeText={text => setExamDay(text)}
         />
         <Button  title="Add Exam" onPress={addExam} />
@@ -383,11 +390,11 @@ const ExamTimetableApp = () => {
       <FlatList
         data={exams}
         renderItem={({ item }) => (
-          <View style={[styles.exam,{borderColor:colors.text}]}>
-            <Text>{item.date}</Text>
-            <Text>{item.day}</Text>
-            <Text>{item.name}</Text>
-            <Text>{item.time}</Text>
+          <View style={[styles.exam,{borderColor:colors.text,}]}>
+            <Text style={{color:'#000000'}}>{item.date}</Text>
+            <Text style={{color:'#000000'}}>{item.day}</Text>
+            <Text style={{color:'#000000'}}>{item.name}</Text>
+            <Text style={{color:'#000000'}}>{item.time}</Text>
 
             <Button title="Delete" onPress={() => deleteExam(item.id)} />
           </View>
@@ -401,22 +408,22 @@ const ExamTimetableApp = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 9,columnGap:9
+    padding: 9,columnGap:9,color:'#000000'
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 20,color:'#000000'
   },
   inputContainer: {
-    marginBottom: 20,
+    marginBottom: 20,color:'#000000'
   },
   input: {
     marginBottom: 10,
     padding: 10,
     borderWidth: 1,
     borderColor: 'black',
-    borderRadius: 5,
+    borderRadius: 5,color:'#000000'
   },
   exam: {
     flexDirection: 'row',
@@ -426,7 +433,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 5,
     padding: 10,
-    marginBottom: 10,color:'#FF0000',fontWeight:'600'
+    marginBottom: 10,color:'#000000',fontWeight:'600',
   },
 });
 

@@ -29,13 +29,13 @@ export default function Parenthome({ navigation }) {
                     renderLoadingScreen()
                 ) : (
                     <View style={{ flex: 1, backgroundColor: colors.primary, height: Dimensions.get('window').height }}>
-                        <View style={{ width: '100%', backgroundColor: colors.background, columnGap: 14, height: 160 }}>
+                        <View style={{ width: '100%', backgroundColor: colors.background, columnGap: 14, height: 170 }}>
                             <Image source={require("./Image/boy.jpeg")} style={styles.profileImage}></Image>
                             <Text style={{ fontSize: 17, fontWeight: 'bold', color: colors.primary, marginTop: 3, alignSelf: 'center', justifyContent: 'center' }}>N.PRAVEEN</Text>
                             <Text style={{ fontSize: 14, fontWeight: 'bold', color: colors.primary, marginTop: 3, alignSelf: 'center', justifyContent: 'center' }}>parent</Text>
                         </View>
 
-                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: colors.text, marginTop: 16, marginStart: 14, left: 6 }}>School Updates</Text>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: colors.text, marginTop: 16, marginStart: 14, left: 6 }}>School Updates</Text>
                         <View style={{ flexDirection: 'row', marginTop: 17, width: "96%", alignSelf: 'center', justifyContent: 'center', columnGap: 8, marginStart: 2 }}>
                             <Card style={{ width: "45%", height: 110, marginStart: 5 }} onPress={() => handleCardPress('Parentevent')}>
                                 <Icon name='calendar-multiple-check' color={colors.bg} size={40} style={styles.cardIcon}></Icon>
@@ -48,7 +48,7 @@ export default function Parenthome({ navigation }) {
                             </Card>
                         </View>
 
-                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: colors.text, marginTop: 17, marginStart: 14, left: 6 }}>Academic Updates</Text>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: colors.text, marginTop: 17, marginStart: 14, left: 6 }}>Academic Updates</Text>
                         <View style={{ flexDirection: 'row', marginTop: 23, width: "96%", alignSelf: 'center', justifyContent: 'center', columnGap: 3, marginStart: 3 }}>
                             <Card style={{ width: "29%", height: 110 }} onPress={() => handleCardPress('Parenthomework')}>
                                 <Icon name='note-text-outline' color={colors.bg} size={40} style={styles.cardIcon}></Icon>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         marginTop:15,
     },
     cardText: {
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: 'bold',
         alignSelf: 'center',
         color: '#000',

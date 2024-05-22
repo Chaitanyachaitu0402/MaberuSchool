@@ -111,7 +111,7 @@ export default function Parentleaveedit({navigation}) {
                             <Text style={{ fontSize: 17, color: colors.text, marginTop: 7, marginStart: 14, }}> From</Text>
                             <View style={{ width: '62%', flexDirection: 'row', borderColor: colors.text, borderWidth: 1, marginTop: 5, marginStart: 7 }}>
                                 <Icon name='calendar-month-outline' color={colors.bg} size={24} style={{ borderRadius: 18, alignSelf: 'center' }} onPress={() => { setOpenn(true) }} />
-                                <TextInput disabled textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeUnderlineColor={'transparent'} underlineColor={'transparent'} placeholder='start date' style={{ fontSize: 16, width: '87%', backgroundColor: 'transparent', }}>{leavedata ? leavedate.toLocaleDateString() : ""}</TextInput>
+                                <TextInput disabled textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeUnderlineColor={'transparent'} underlineColor={'transparent'} placeholder='start date' style={{ fontSize: 13, width: '86%', backgroundColor: 'transparent', }}>{leavedata ? leavedate.toLocaleDateString() : ""}</TextInput>
 
                                 <DatePicker
                                     modal
@@ -142,7 +142,7 @@ export default function Parentleaveedit({navigation}) {
                             <Text style={{ fontSize: 17, color: colors.text, marginTop: 7, }}>To </Text>
                             <View style={{ width: '62%', flexDirection: 'row', borderColor: colors.text, borderWidth: 1, marginTop: 5, }}>
                                 <Icon name='calendar-month-outline' color={colors.bg} size={24} style={{ borderRadius: 18, alignSelf: 'center' }} onPress={() => { setOpen(true) }} />
-                                <TextInput disabled textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeUnderlineColor={'transparent'} underlineColor={'transparent'} placeholder='start date' style={{ fontSize: 16, width: '88%', backgroundColor: 'transparent', }}>{data ? date.toLocaleDateString() : ""}</TextInput>
+                                <TextInput disabled textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeUnderlineColor={'transparent'} underlineColor={'transparent'} placeholder='start date' style={{ fontSize: 13, width: '86%', backgroundColor: 'transparent', }}>{data ? date.toLocaleDateString() : ""}</TextInput>
 
                                 <DatePicker
                                     modal

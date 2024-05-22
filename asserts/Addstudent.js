@@ -229,8 +229,8 @@ export default function Addstudent({ navigation }) {
                         <View>
                             <RadioButton.Group value={gender} onValueChange={(gender) => { setgender(gender) }}>
 
-                                <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 13, columnGap: 35 }}>
-                                    <Text style={{ color: colors.text, fontSize: 20 }}>Gender</Text>
+                                <View style={{ flexDirection: 'row', alignSelf: 'center', padding:8, columnGap: 35 }}>
+                                    <Text style={{ color: colors.text, fontSize: 18,fontWeight:'600' }}>Gender</Text>
 
                                     <View style={{ flexDirection: 'row', }}>
                                         <RadioButton value='male' color='black'></RadioButton>

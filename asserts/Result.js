@@ -101,11 +101,11 @@ const Table = ({navigation}) => {
                     </View>
     <View style={{ flexDirection: 'column',borderWidth: 1 ,  borderColor: 'black',margin: 8,borderRadius:5}}>
         
-      <View style={{flexDirection: 'row',justifyContent: 'space-between',borderBottomWidth: 1, borderBottomColor: 'black', height: 57,backgroundColor:colors.bg}}>
-        <Text style={{flex: 1, textAlign: 'center', padding: 10,color:colors.primary,fontWeight:'bold',fontSize:17}}>Subject</Text>
-        <Text style={{flex: 1, textAlign: 'center', padding: 10,color:colors.primary,fontWeight:'bold',fontSize:17}}>Marks</Text>
-        <Text style={{flex: 1, textAlign: 'center', padding: 10,color:colors.primary,fontWeight:'bold',fontSize:17}}>%percent</Text>
-        <Text style={{flex: 1, textAlign: 'center', padding: 10,height: '',color:colors.primary,fontWeight:'bold',fontSize:17}}>Grade</Text>
+      <View style={{flexDirection: 'row',justifyContent: 'space-between',borderBottomWidth: 1, borderBottomColor: 'black', height: 57,backgroundColor:colors.bg,padding:8}}>
+        <Text style={{flex: 1, textAlign: 'center', color:colors.primary,fontWeight:'bold',fontSize:14}}>Subject</Text>
+        <Text style={{flex: 1, textAlign: 'center', color:colors.primary,fontWeight:'bold',fontSize:14}}>Marks</Text>
+        <Text style={{flex: 1, textAlign: 'center',color:colors.primary,fontWeight:'bold',fontSize:14}}>%percent</Text>
+        <Text style={{flex: 1, textAlign: 'center', color:colors.primary,fontWeight:'bold',fontSize:14}}>Grade</Text>
 
       </View>
 
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',margin:7
   },
   selectedTextStyle: {
-      fontSize: 19,
+      fontSize: 15,
       color: 'black',margin:5
 
   },

@@ -69,9 +69,9 @@ export default function Student({navigation}) {
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} placeholder='Mothername'  style={{ width: '87%', borderColor: colors.background, borderWidth: 1, backgroundColor: colors.primary, marginTop: 11, alignSelf: 'center', }}></TextInput>
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} placeholder='Mobile number'  style={{ width: '87%', borderColor: colors.background, borderWidth: 1, backgroundColor: colors.primary, marginTop: 11, alignSelf: 'center', }}></TextInput>
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} placeholder='Email'  style={{ width: '87%', borderColor: colors.background, borderWidth: 1, backgroundColor: colors.primary, marginTop: 11, alignSelf: 'center', }}></TextInput>
-                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} placeholder='Address' multiline={true} style={{ width: '87%',height:77, borderColor: colors.background, borderWidth: 1, backgroundColor: colors.primary, marginTop: 11, alignSelf: 'center', }}></TextInput>
+                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} placeholder='Address' multiline={true} style={{ width: '87%', borderColor: colors.background, borderWidth: 1, backgroundColor: colors.primary, marginTop: 11, alignSelf: 'center', }}></TextInput>
 
-                    <Button style={{ width: "43%", height: 48, backgroundColor: colors.bg, alignSelf: 'center',marginTop:9 }} labelStyle={{ fontSize: 22, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center', marginTop: 16,color:colors.primary }}onPress={home}>SAVE</Button>
+                    <Button style={{ width: "43%", height: 48, backgroundColor: colors.bg, alignSelf: 'center',marginTop:9 }} labelStyle={{ fontSize: 18, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center', marginTop: 16,color:colors.primary }}onPress={home}>SAVE</Button>
 
                 </View>
 

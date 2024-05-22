@@ -33,7 +33,7 @@ const Exampletoogle = ({ navigation }) => {
                 renderLoadingScreen()
             ) : (
                 <View style={{ flex: 1, backgroundColor: colors.primary, height: Dimensions.get('window').height }}>
-                    <View style={{ width: '100%', backgroundColor: colors.background, flexDirection: 'row', columnGap: 14, height: 150 }}>
+                    <View style={{ width: '100%', backgroundColor: colors.background, flexDirection: 'row', columnGap: 14, height: 152 }}>
                         <Image source={require("./Image/headmaster.jpg")} style={styles.profileImage} />
                         <View style={{ marginTop: 12 }}>
                             <Text style={{ fontSize: 15, fontWeight: 'bold', color: colors.primary, marginTop: 26 }}>L.surendar</Text>
@@ -53,19 +53,19 @@ const Exampletoogle = ({ navigation }) => {
                     <View style={{ flexDirection: 'row', width: "96%", alignSelf: 'center', justifyContent: 'center', columnGap: 8, marginStart: 3 }}>
                         <Card style={{ width: "29%", height: 110 }} onPress={() => handleCardPress('Monthattendance')}>
                             <Icon name='account-check-outline' color={colors.bg} size={40} style={{ margin: 6, justifyContent: 'center', alignSelf: 'center', height: 44 }} />
-                            <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>My</Text>
-                            <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>attendance </Text>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>My</Text>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>attendance </Text>
                         </Card>
                         <Card style={{ width: "29%", height: 110, marginStart: 13 }} onPress={() => handleCardPress('Attendancecard')}>
                             <Icon name='view-dashboard-edit-outline' color={colors.bg} size={40} style={{ margin: 5, justifyContent: 'center', alignSelf: 'center', height: 44 }} />
-                            <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}> Student</Text>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Attendance </Text>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}> Student</Text>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Attendance </Text>
                         </Card>
                         <Card style={{ width: "29%", height: 110, marginStart: 7 }} onPress={() => handleCardPress('Attendancecard2')}>
                             <Icon name='notebook-outline' color={colors.bg} size={40} style={{ justifyContent: 'center', alignSelf: 'center', height: 44, marginTop: 5 }} />
                             <View style={{ margin: 7 }}>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>staff</Text>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>attendance</Text>
+                                <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>staff</Text>
+                                <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>attendance</Text>
                             </View>
                         </Card>
                     </View>
@@ -74,22 +74,22 @@ const Exampletoogle = ({ navigation }) => {
                         <Card style={{ width: "29%", height: 110 }}>
                             <View style={{ margin: 7 }}>
                                 <Text style={{ fontSize: 25, fontWeight: 'bold', alignSelf: 'center', color: colors.bg }}>70</Text>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Total</Text>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>techers</Text>
+                                <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Total</Text>
+                                <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Teachers</Text>
                             </View>
                         </Card>
                         <Card style={{ width: "29%", height: 110, marginStart: 13 }}>
                             <View style={{ margin: 7 }}>
                                 <Text style={{ fontSize: 25, fontWeight: 'bold', alignSelf: 'center', color: colors.bg }}>30</Text>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Number of</Text>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Present</Text>
+                                <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Number of</Text>
+                                <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Present</Text>
                             </View>
                         </Card>
                         <Card style={{ width: "29%", height: 110, marginStart: 13 }}>
                             <View style={{ margin: 7 }}>
                                 <Text style={{ fontSize: 25, fontWeight: 'bold', alignSelf: 'center', color: colors.bg }}>5</Text>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Number of</Text>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Absent</Text>
+                                <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Number of</Text>
+                                <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Absent</Text>
                             </View>
                         </Card>
                     </View>
@@ -97,18 +97,18 @@ const Exampletoogle = ({ navigation }) => {
                     <View style={{ flexDirection: 'row', width: "96%", alignSelf: 'center', justifyContent: 'center', columnGap: 8, marginStart: 3,marginTop:10, }}>
                         <Card style={{ width: "29%", height: 110 }} onPress={() => handleCardPress('Classlist')}>
                             <Icon name='account-group-outline' color={colors.bg} size={40} style={{ marginTop: 7, justifyContent: 'center', alignSelf: 'center', height: 44 }} />
-                            <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Class</Text>
-                            <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>List </Text>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Class</Text>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>List </Text>
                         </Card>
                         <Card style={{ width: "29%", height: 110, marginStart: 13 }} onPress={() => handleCardPress('Allteachers')}>
                             <Icon name='account-group-outline' color={colors.bg} size={40} style={{ marginTop: 7, justifyContent: 'center', alignSelf: 'center', height: 44 }} />
-                            <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}> Add Staff</Text>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>members</Text>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}> Add Staff</Text>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>members</Text>
                         </Card>
                         <Card style={{ width: "29%", height: 110, marginStart: 7 }} onPress={() => handleCardPress('Event')}>
                             <Icon name='calendar-clock' color={colors.bg} size={40} style={{ marginTop: 7, justifyContent: 'center', alignSelf: 'center', height: 44 }} />
-                            <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Event </Text>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>List</Text>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Event </Text>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>List</Text>
                         </Card>
                     </View>
                 </View>

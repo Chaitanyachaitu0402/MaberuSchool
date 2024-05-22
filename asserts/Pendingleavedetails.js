@@ -15,7 +15,7 @@ export default function Leavedetail({navigation}) {
         <SafeAreaView>
             <View style={{ flex: 1, backgroundColor: colors.b, height: Dimensions.get('window').height }}>
 
-            <Button textColor={colors.primary} buttonColor={colors.primary} labelStyle={{ fontSize: 16, color: colors.bg,alignSelf:'center' }} style={{ width: '55%', height: 39, borderColor: colors.background, borderRadius: 6, marginTop: 10,alignSelf:'center',borderWidth:2 }}onPress={()=>navigation.navigate('Parentleaveadd')}>    Add Leave  </Button >
+            <Button textColor={colors.primary} buttonColor={colors.primary} labelStyle={{ fontSize: 14, color: colors.bg,alignSelf:'center' }} style={{ width: '55%', height: 43, borderColor: colors.background, borderRadius: 6,alignSelf:'center',borderWidth:2 ,margin:5}}onPress={()=>navigation.navigate('Parentleaveadd')}>    Add Leave  </Button >
 
                 <Card style={{ width: '95%', alignSelf: 'center', backgroundColor: colors.primary, marginTop: 14, padding: 8, height: 220 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', margin: 6 }}>

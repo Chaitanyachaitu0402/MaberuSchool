@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',margin:7
     },
     selectedTextStyle: {
-        fontSize: 19,
+        fontSize: 16,
         color: 'black',margin:5
 
     },
@@ -162,6 +162,6 @@ const styles = StyleSheet.create({
     },
     inputSearchStyle: {
         height: 40,
-        fontSize: 16,
+        fontSize: 14,
     },
 });

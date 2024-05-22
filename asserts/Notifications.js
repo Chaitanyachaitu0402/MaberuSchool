@@ -19,7 +19,7 @@ const Notifications = ({navigation}) => {
     const apperancce =(data)=> {
         console.log("data : ", data);
         return (
-            <Card style={{ width: '100%', height: 150, margin: 4, borderRadius: 10, backgroundColor: colors.primary }} >
+            <Card style={{ width: '100%',  margin: 4, borderRadius: 10, backgroundColor: colors.primary }} >
 
 
                 <View style={{ flexDirection: 'row' }} >
@@ -39,15 +39,15 @@ const Notifications = ({navigation}) => {
 
 
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginStart: 16 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding:6}}>
                     <View>
-                        <Text style={{ color: colors.text, fontSize: 14, marginStart: 16, marginTop: 4 }}>{data.item.time}</Text>
+                        <Text style={{ color: colors.text, fontSize: 12,  }}>{data.item.time}</Text>
                     </View>
 
 
                     <View style={{ flexDirection: 'row', columnGap: 4, marginRight: 3 }}>
-                        <Icon name='clock-outline' color={colors.text} size={20} style={{ marginTop: 6, alignSelf: 'flex-end', }}></Icon>
-                        <Text style={{ color: colors.text, fontSize: 14, marginTop: 0, alignSelf: 'flex-end', }}>{data.item.day}</Text>
+                        <Icon name='clock-outline' color={colors.text} size={18} style={{  alignSelf: 'flex-end', }}></Icon>
+                        <Text style={{ color: colors.text, fontSize: 12,  alignSelf: 'flex-end', }}>{data.item.day}</Text>
                     </View>
                 </View>
             </Card>
@@ -56,172 +56,26 @@ const Notifications = ({navigation}) => {
 
     }
 
-    {/* <Text>----Flatlist appearance----</Text> */ }
 
-   
-    // const [role, setrole] = useState("")
-    // const [accessToken, setaccessToken] = useState("")
-    // const [refreshtoken, setrefreshToken] = useState("")
-    // const [notificationid, setnotificationid] = useState("")
-    // const [notificationData, setnotificationData] = useState([])
-
-    // {/* <Text>----Integration----</Text> */ }
-
-    // const getNotificationData = async (ID, role) => {
-    //     try {
-    //         const notificationresponse = await fetch("https://localhost.com:3000/getNotification-by-id", {
-    //             method: "POST",
-    //             body: JSON.stringify({ user_id: ID, role: role }),
-    //             Authorization: `Bearer ${accessToken}`,
-    //             headers: { Accept: "application/JSON, text/plain, */*", 'Content-Type': 'application/json; charset=UTF-8' }
-    //         }).then((Res) => { return Res.json() });
-
-    //         const notificationdata = await notificationresponse.then(data);
-    //         if (notificationdata.success) {
-    //             setnotificationData(notificationData.response)
-    //             setTimeout(() => {
-    //                 console.log('=========================>')
-    //                 setisShimmering(true);
-    //             }, 3000);
-    //             setRoleValue(notificationdata.role)
-
-    //         } else {
-    //             if (notificationdata.message == "invalid token") {
-    //                 generateRefreshtoken(refreshtoken);
-    //             } else {
-    //                 Alert.alert('this notification cant be updated right now')
-    //             }
-    //         }
-    //     } catch (error) {
-    //         Alert.alert(error)
-    //     }
-    // }
-
-    // const getuserdata = async () => {
-    //     const role = await AsyncStorage.getItem("role");
-    //     const accessToken = await AsyncStorage.getItem("accessToken");
-    //     const refreshtoken = await AsyncStorage.getItem("refreshtoken");
-    //     const notificationID = await AsyncStorage.getItem("notificationID");
-
-    //     getNotificationData(notificationID, role);
-    //     setrole(role);
-    //     setnotificationid(notificationid);
-    //     setaccessToken(accessToken);
-    //     setrefreshToken(refreshtoken);
-    // }
-
-    // const Notification = async () => {
-
-    //     try {
-    //         const notificationresponse = await fetch("https://localhost.com:3000/update-teacher-by id", {
-    //             method: "POST",
-    //             body: JSON.stringify({ id: notificationid, role: role }),
-    //             Authorization: `Bearer ${accessToken}`,
-    //             headers: { Accept: "application/JSON, text/plain, */*", 'Content-Type': 'application/json; charset=UTF-8' }
-    //         });
-
-    //         const notificationdata = await notificationresponse.then(data);
-    //         if (notificationdata.success) {
-    //             Alert.alert('successfully teacher has updated')
-    //         } else {
-    //             if (notificationdata.message == "invalid token") {
-    //                 generateRefreshtoken(refreshtoken);
-    //             } else {
-    //                 Alert.alert('this teacher cant be updated right now')
-    //             }
-    //         }
-
-    //     } catch (error) {
-    //         Alert.alert(error)
-    //     }
-
-    //     const generateRefreshtoken = async (refreshtoken) => {
-    //         try {
-    //             const notificationresponse = await fetch("https://localhost.com:3000/generaterefreshtoken", {
-    //                 method: "POST", Authorization: `Bearer ${refreshtoken}`
-    //             }).then((Res) => { return Res.JSON() });
-
-    //             const notificationdata = notificationresponse
-
-    //             if (notificationresponse.success) {
-    //                 AsyncStorage.setItem("accesstoken", notificationdata.accesstoken)
-    //                 AsyncStorage.setItem("refreshtoken", notificationdata.refreshtoken)
-    //                 await Notification();
-    //             }
-    //         } catch (error) {
-    //         }
-    //     }
-    // }
-    
-    // useEffect(() => {
-    //     getuserdata()
-    // }, [])
-
-    {/* <Text>----Integration----</Text> */ }
     const { colors } = useTheme();
-    setTimeout(() => {
-        console.log('=========================>')
-        setisShimmering(true);
-    }, 2000);
+
 
     return (
 
         <View style={styles.container}>
 
-            {isShimmering ? (
 
                 <View style={{ backgroundColor: colors.primary, flex: 1, }}>
 
                 
-
-                    {/* <Text>----Flatlist view----</Text> */}
-
                     <FlatList data={horizontalview} renderItem={apperancce} horizontal={false} style={{ margin: 9, columnGap: 5 }}></FlatList>
 
-                    {/* <Text>----Flatlist view----</Text> */}
 
                 </View>
 
-            ) : (
 
-                <View>
-                    <Card style={{ width: '100%', height: 100, margin: 4, borderRadius: 10, justifyContent: 'center', alignSelf: 'center', backgroundColor: colors.primary }}>
+              
 
-                        <View style={{ flexDirection: 'row' }}>
-
-                            <ShimmerPlaceholder style={{ width: 70, height: 70, marginStart: 5, borderRadius: 35, }}
-                                LinearGradient={LinearGradient}
-                                gradientColors={['#e1e9ee', '#f0f4f7', '#e1e9ee']}
-                                visible={isShimmering}
-                                autoRun={isShimmering}>
-                            </ShimmerPlaceholder>
-
-                            <View style={{ justifyContent: 'center', }}>
-                                <ShimmerPlaceholder style={{ margin: 5, width: '75%' }}
-                                    LinearGradient={LinearGradient}
-                                    gradientColors={['#e1e9ee', '#f0f4f7', '#e1e9ee']}
-                                    visible={isShimmering}
-                                    autoRun={isShimmering}>
-                                </ShimmerPlaceholder>
-                                <ShimmerPlaceholder style={{ margin: 5, width: '85%' }}
-                                    LinearGradient={LinearGradient}
-                                    gradientColors={['#e1e9ee', '#f0f4f7', '#e1e9ee']}
-                                    visible={isShimmering}
-                                    autoRun={isShimmering}>
-                                </ShimmerPlaceholder>
-                                <ShimmerPlaceholder style={{ margin: 5, width: '99%' }}
-                                    LinearGradient={LinearGradient}
-                                    gradientColors={['#e1e9ee', '#f0f4f7', '#e1e9ee']}
-                                    visible={isShimmering}
-                                    autoRun={isShimmering}>
-                                </ShimmerPlaceholder>
-                            </View>
-
-                        </View>
-
-                    </Card>
-                </View>
-            )}
 
             {/* <Text>----Shimmer style view above---</Text> */}
 

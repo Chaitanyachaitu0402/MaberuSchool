@@ -891,8 +891,6 @@ export const DrawStack5 = () => {
            ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
         }}/>   
     
-       
- 
 
  <Drawstack.Screen name="Notifications" component={Notifications}
         options={{
@@ -920,9 +918,6 @@ export const DrawStack5 = () => {
         }}/> 
       
 
-            
-      
-      
          <Drawstack.Screen name="Profile" component={Profile}
         options={{
            title: 'Profile',

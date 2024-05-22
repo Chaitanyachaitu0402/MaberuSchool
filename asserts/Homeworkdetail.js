@@ -13,10 +13,10 @@ export default function Homeworkdetail({navigation}) {
      
       <View style={{ marginTop: 7, margin: 8 }}>
 
-        <Text style={{ fontSize: 17, color: colors.text, marginTop: 10, marginStart: 4 }}>Teacher Name: Rajesh</Text>
-        <Text style={{ fontSize: 17, color: colors.text, marginTop: 6, marginStart: 4 }}>SubjectName: English</Text>
-        <Text style={{ fontSize: 17, color: colors.text, marginTop: 6, marginStart: 4 }}>Deadline Timing: 01/01/2024-03/01/2024</Text>
-        <Text style={{ fontSize: 17, color: colors.text, fontWeight: '500', marginTop: 8, marginStart: 4 }}>Description:Lorem ipsum dolor st amet,consecttetur adipiscing elit,sed to eiusmod tempor incididunt ut labore et dolore magna aliqua .Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat </Text>
+        <Text style={{ fontSize: 15, color: colors.text, marginTop: 10, marginStart: 4 }}>Teacher Name: Rajesh</Text>
+        <Text style={{ fontSize: 15, color: colors.text, marginTop: 6, marginStart: 4 }}>SubjectName: English</Text>
+        <Text style={{ fontSize: 15, color: colors.text, marginTop: 6, marginStart: 4 }}>Deadline Timing: 01/01/2024-03/01/2024</Text>
+        <Text style={{ fontSize: 17, color: colors.text, fontWeight: '400', marginTop: 8, marginStart: 4 }}>Description:Lorem ipsum dolor st amet,consecttetur adipiscing elit,sed to eiusmod tempor incididunt ut labore et dolore magna aliqua .Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat </Text>
 
       </View>
 
