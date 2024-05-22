@@ -66,7 +66,7 @@ export default function ({ navigation }) {
                                 <Text style={styles.cardText}>Fee</Text>
                                 <Text style={styles.cardText}>Details</Text>
                             </Card>
-                            <Card style={{ width: "29%", height: 110, marginStart: 13 }} onPress={() => handleCardPress('Leaveadd')}>
+                            <Card style={{ width: "29%", height: 110, marginStart: 13 }} onPress={() => handleCardPress('Teacherpendingleave')}>
                                 <Icon name='account-arrow-left-outline' color={colors.bg} size={40} style={styles.cardIcon}></Icon>
                                 <Text style={styles.cardText}>Add</Text>
                                 <Text style={styles.cardText}>Leave</Text>

@@ -72,7 +72,7 @@ export default function Parenthome({ navigation }) {
                                 <Text style={styles.cardText}>Fee Details</Text>
                             </Card>
 
-                            <Card style={{ width: "29%", height: 110, marginStart: 13 }} onPress={() => handleCardPress('Parentleaveadd')}>
+                            <Card style={{ width: "29%", height: 110, marginStart: 13 }} onPress={() => handleCardPress('Pendingleavedetails')}>
                                 <Icon name='account-arrow-left-outline' color={colors.bg} size={40} style={styles.cardIcon}></Icon>
                                 <Text style={styles.cardText}>Add Leave</Text>
                             </Card>
