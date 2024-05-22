@@ -8,6 +8,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function ApprovalMenu(navigation){;
  
     const { colors } = useTheme();
+   
+
+  
+
     return (
         <SafeAreaView>
             <View style={{ flex: 1, backgroundColor: colors.b, height: Dimensions.get('window').height }}>
