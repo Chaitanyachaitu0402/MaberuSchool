@@ -871,9 +871,9 @@ export const DrawStack4 = () => {
 export const DrawStack5 = () => {
   const{colors}=useTheme();
   return (
-    <Drawstack.Navigator initialRouteName='Administration' >
+    <Drawstack.Navigator initialRouteName='Directorhome' >
    
-    <Drawstack.Screen name="Administration" component={Administration}
+    <Drawstack.Screen name="Directorhome" component={Directorhome}
         options={{
            title: 'Home',
             drawerIcon: ({ size}) => (

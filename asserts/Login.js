@@ -14,7 +14,7 @@ export default function Login() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      navigation.navigate('schooldrawer');
+      navigation.navigate('schooldrawer2');
     }, 2000); // Simulate a network request delay
   };
 
