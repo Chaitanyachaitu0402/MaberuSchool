@@ -89,7 +89,7 @@ export default function Administration({ navigation }) {
                 <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Add</Text>
                 <Text style={{ fontSize: 16, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Other Staff</Text>
               </Card>
-              <Card style={{ width: '29%', height: 110, marginStart: 13 }} onPress={() => handleCardPress('Techerleavelist')}>
+              <Card style={{ width: '29%', height: 110, marginStart: 13 }} onPress={() => handleCardPress('Teacherpendingleave')}>
                 <Icon name="account-arrow-right-outline" color={colors.bg} size={40} style={{ margin: 6, justifyContent: 'center', alignSelf: 'center', height: 44 }} />
                 <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Leave</Text>
                 <Text style={{ fontSize: 15, fontWeight: 'bold', alignSelf: 'center', color: colors.text }}>Response</Text>

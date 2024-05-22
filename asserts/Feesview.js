@@ -33,7 +33,7 @@ export default function Feesview  ({navigation})  {
 
       </View>
 
-      <View style={{flexDirection: 'row',justifyContent: 'space-between',borderBottomWidth: 1, borderBottomColor: 'black', height: 46,}}>
+      <View style={{flexDirection: 'row',justifyContent: 'space-between',borderBottomWidth: 1, borderBottomColor: 'black', height: 61,}}>
         <Text style={{flex: 1, textAlign: 'center', padding: 10,color:colors.text}}>Registration Fee</Text>
         <Text style={{flex: 1, textAlign: 'center', padding: 10,color:colors.text}}>2500</Text>
         <Text style={{flex: 1, textAlign: 'center', padding: 10,color:colors.text}}>2700</Text>
@@ -105,4 +105,3 @@ export default function Feesview  ({navigation})  {
   );
 };
 
-// 

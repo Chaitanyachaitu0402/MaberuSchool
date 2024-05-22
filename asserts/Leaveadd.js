@@ -11,7 +11,7 @@ export default function Leaveadd({navigation}) {
 
     const { colors } = useTheme();
     const home=()=>{
-        navigation.navigate("schooldrawer3")
+        navigation.navigate("Teacherpendingleave")
     }
     const [leavevalue, setleaveValue] = useState(null);
 
@@ -201,11 +201,10 @@ export default function Leaveadd({navigation}) {
                         <TextInput textColor={colors.text} placeholderTextColor={colors.text} multiline={true} onChangeText={reasondetails} value={reason} style={{ marginTop: 8, width: '87%', minHeight: 100, borderColor: colors.background, borderWidth: 1, backgroundColor: colors.primary, alignSelf: 'center', }}></TextInput>
                     </View>
 
-                    <View style={{ marginTop: 11 }}>
-                        <Button style={{ width: "43%", height: 48, backgroundColor: colors.bg, alignSelf: 'center' }} labelStyle={{ fontSize: 22, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center', marginTop: 16,color:colors.primary }}onPress={home}>Apply</Button>
-
-                    </View>
-
+                 
+ <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 17, color: colors.text, fontWeight: 'bold' }} style={{ width: '52%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:9}} onPress={home}>
+                        APPLY
+                    </Button >
                 </View>
             </ScrollView>
         </SafeAreaView>

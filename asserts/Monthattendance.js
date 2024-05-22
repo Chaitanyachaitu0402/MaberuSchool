@@ -245,9 +245,15 @@ export default function App() {
   const { colors } = useTheme();
   const [selected, setSelected] = useState('');
   const [markedDates, setMarkedDates] = useState({});
+
   const [day, setday] = useState("")
   const daydetails = (name) => {
     setday(name)
+    console.log(name);
+  }
+  const [id, setid] = useState("")
+  const iddetails = (name) => {
+    setid(name)
     console.log(name);
   }
   const handleDayPress = (day) => {
@@ -282,7 +288,7 @@ export default function App() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
       <TextInput textColor={colors.text} placeholderTextColor={colors.text} onChangeText={daydetails} value={day} placeholder='Enter Year' style={{ width: '87%', borderColor: colors.background, borderWidth: 1, backgroundColor: colors.b, marginTop: 11, alignSelf: 'center', }}></TextInput>
-      <TextInput textColor={colors.text} placeholderTextColor={colors.text} onChangeText={daydetails} value={day} placeholder='Enter Id' style={{ width: '87%', borderColor: colors.background, borderWidth: 1, backgroundColor: colors.b, marginTop: 11, alignSelf: 'center', }}></TextInput>
+      <TextInput textColor={colors.text} placeholderTextColor={colors.text} onChangeText={iddetails} value={id} placeholder='Enter Id' style={{ width: '87%', borderColor: colors.background, borderWidth: 1, backgroundColor: colors.b, marginTop: 11, alignSelf: 'center', }}></TextInput>
 
       <View >
         <Dropdown

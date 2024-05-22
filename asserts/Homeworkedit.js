@@ -145,7 +145,7 @@ export default function Teacherworkcreate({navigation}) {
                     </Button > */}
 
 <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 17, color: colors.text, fontWeight: 'bold' }} style={{ width: '52%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:9}}onPress={ () => navigation.navigate('Teacherhomeworklist')}>
-                        ADD HOMEWORK
+                        EDIT HOMEWORK
                     </Button >
                     </View>
 

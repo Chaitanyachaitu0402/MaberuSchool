@@ -178,62 +178,62 @@ export default function Createfee() {
                     <View style={{ height: 14 }} >
                     </View >
 
-                    <View style={{ flexDirection: 'column', borderWidth: 1, borderColor: 'black', borderRadius: 5, width: '96%', alignSelf: 'center' }}>
+                    <View style={{ flexDirection: 'column', borderWidth: 1, borderColor: 'black', borderRadius: 5, width: '96%', alignSelf: 'center',margin:8 }}>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 57, backgroundColor: colors.background }}>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 8, color: colors.primary, fontWeight: 'bold', fontSize: 17 }}>Date</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 60, backgroundColor: colors.background }}>
+                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.primary, fontWeight: 'bold', fontSize: 17 }}>Date</Text>
                             <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.primary, fontWeight: 'bold', fontSize: 17 }}>Day</Text>
                             <Text style={{ flex: 1, textAlign: 'center', padding: 10, height: '', color: colors.primary, fontWeight: 'bold', fontSize: 17 }}>Subject</Text>
                             <Text style={{ flex: 1, textAlign: 'center', padding: 10, height: '', color: colors.primary, fontWeight: 'bold', fontSize: 17 }}>Timing</Text>
 
                         </View>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46, }}>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>02/04/2024</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>Monday</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>Social</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46,padding:8 }}>
+                            <Text style={{ flex: 1, textAlign: 'center',  color: colors.text,fontSize:14 }}>02/04/2024</Text>
+                            <Text style={{ flex: 1, textAlign: 'center',  color: colors.text,fontSize:14 }}>Monday</Text>
+                            <Text style={{ flex: 1, textAlign: 'center',  color: colors.text,fontSize:14 }}>Social</Text>
 
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>10:00AM</Text>
+                            <Text style={{ flex: 1, textAlign: 'center',  color: colors.text,fontSize:14 }}>10:00AM</Text>
                         </View>
 
 
 
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46, }}>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>03/04/2024</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>Tuesday</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>Physics</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46,padding:8 }}>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>03/04/2024</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>Tuesday</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>Physics</Text>
 
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>10:00AM</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>10:00AM</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46, }}>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>04/04/2024</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>wednesday</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>Science</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>10:00AM</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46, padding:8 }}>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>04/04/2024</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>wednesday</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>Science</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>10:00AM</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46, }}>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>05/04/2024</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>thursday</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>Telugu</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46,padding:8  }}>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>05/04/2024</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>thursday</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>Telugu</Text>
 
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>10:00AM</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>10:00AM</Text>
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46, }}>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>06/04/2024</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>Friday</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>Hindi</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46,padding:8  }}>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>06/04/2024</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>Friday</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>Hindi</Text>
 
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>10:00AM</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>10:00AM</Text>
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46, }}>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>07/04/2024</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>saturday</Text>
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>Maths</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: colors.text, height: 46, padding:8 }}>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>07/04/2024</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>saturday</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>Maths</Text>
 
-                            <Text style={{ flex: 1, textAlign: 'center', padding: 10, color: colors.text }}>10:00AM</Text>
+                            <Text style={{ flex: 1, textAlign: 'center', fontSize:14, color: colors.text }}>10:00AM</Text>
                         </View>
                     </View>
 
