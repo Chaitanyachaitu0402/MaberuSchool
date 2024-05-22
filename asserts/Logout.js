@@ -26,31 +26,12 @@ const Principalhome = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        textColor={colors.text}
-        placeholderTextColor={colors.text}
-        textContentType='name'
-        activeOutlineColor={colors.text}
-        outlineColor={colors.text}
-        mode='outlined'
-        style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}
-      />
-      <TextInput
-        textColor={colors.text}
-        placeholderTextColor={colors.text}
-        textContentType='name'
-        activeOutlineColor={colors.text}
-        outlineColor={colors.text}
-        mode='outlined'
-        placeholder='Mother Occcupation'
-        style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}
-      />
 
       {logoutPopupVisible && (
         <View style={styles.popup}>
           <Text>Are you sure you want to logout?</Text>
           <View style={styles.buttonContainer}>
-            <Button title="Cancel" onPress={() => navigation.navigate('Principalhome')} />
+            <Button style={styles.button} title="Cancel" onPress={() => navigation.navigate('Principalhome')} />
             <Button title="Logout" onPress={handleConfirmLogout} />
           </View>
         </View>
@@ -77,7 +58,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-around',
+    marginTop:50,
   },
+  button:{
+  padding:10
+  }
 });
 
 export default Principalhome;

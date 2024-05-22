@@ -1,4 +1,4 @@
-import { View, Text,TouchableOpacity,Image } from 'react-native'
+import { View, Text,TouchableOpacity,Image,Alert } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import 'react-native-gesture-handler';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 
 
 
@@ -135,12 +135,50 @@ const schooltopstack = createMaterialTopTabNavigator();
 const Drawstack = createDrawerNavigator();
 
 
+const CustomDrawerContent = (props) => {
+  const { colors } = useTheme();
+
+  const handleLogout = () => {
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to logout?",
+      [
+        {
+          text: "No",
+          onPress: () => {},
+          style: "cancel"
+        },
+        {
+          text: "Yes",
+          onPress: () => props.navigation.navigate('Login'),
+        }
+      ],
+      { cancelable: false }
+    );
+  };
+
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem
+        label="Logout"
+        icon={() => <Icon name="logout" size={24} color={colors.text} />}
+        onPress={handleLogout}
+        style={{ marginTop: 10 }}
+      />
+    </DrawerContentScrollView>
+  );
+};
+
+
 export default function App() {
+
   const{colors}=useTheme();
 
   return (
 
     <NavigationContainer>
+
     <stack.Navigator initialRouteName='Splash' screenOptions={{
       headerStyle: {
         backgroundColor: colors.background,
@@ -425,7 +463,7 @@ export default function App() {
 export const DrawStacks = () => {
   const{colors}=useTheme();
   return (
-    <Drawstack.Navigator initialRouteName='Administration' >
+    <Drawstack.Navigator initialRouteName='Administration' drawerContent={(props) => <CustomDrawerContent {...props} />}>
    
     <Drawstack.Screen name="Administration" component={Administration}
         options={{
@@ -530,7 +568,7 @@ export const DrawStacks = () => {
 export const DrawStack2 = () => {
   const{colors}=useTheme();
   return (
-    <Drawstack.Navigator initialRouteName='Principalhome' >
+    <Drawstack.Navigator initialRouteName='Principalhome' drawerContent={(props) => <CustomDrawerContent {...props} />}>
      {/* <Drawstack.Screen name="Bottomstack4" component={Bottomstack4}
         options={{
            title: 'Bottom',
@@ -649,7 +687,7 @@ export const DrawStack3 = () => {
   const {colors}=useTheme();
 
   return (
-    <Drawstack.Navigator initialRouteName='Teacherhome' >
+    <Drawstack.Navigator initialRouteName='Teacherhome' drawerContent={(props) => <CustomDrawerContent {...props} />}>
     
     <Drawstack.Screen name="Teacherhome" component={Teacherhome}
         options={{
@@ -793,85 +831,113 @@ export const DrawStack3 = () => {
 export const DrawStack4 = () => {
   const {colors}=useTheme();
   return (
-    <Drawstack.Navigator initialRouteName='Parenthome' >
-    
-    <Drawstack.Screen name="Parenthome" component={Parenthomepage}
-        options={{
-           title: 'Home',
-            drawerIcon: ({ size}) => (
-              <Icon
-                 name="home-outline"
-                 size={30}
-                 color={colors.background} 
+    <Drawstack.Navigator
+            initialRouteName='Parenthome'
+            drawerContent={(props) => <CustomDrawerContent {...props} />}
+          >
+            <Drawstack.Screen
+              name="Parenthome"
+              component={Parenthomepage}
+              options={{
+                title: 'Home',
+                drawerIcon: ({ size }) => (
+                  <Icon
+                    name="home-outline"
+                    size={30}
+                    color={colors.background}
                   />
-           ), headerStyle: {backgroundColor:colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
-        }}/>   
-      
- 
-    
-             <Drawstack.Screen name="Parentleavelist" component={Parentleavelist}
-        options={{
-           title: 'Leave Response',
-            drawerIcon: ({ size}) => (
-              <Icon
-                 name="playlist-check"
-                 size={30}
-                 color={colors.background} 
+                ),
+                headerStyle: { backgroundColor: colors.background },
+                headerTintColor: colors.primary,
+                headerTitleStyle: { fontWeight: 'bold' },
+              }}
+            />
+            <Drawstack.Screen
+              name="Parentleavelist"
+              component={Parentleavelist}
+              options={{
+                title: 'Leave Response',
+                drawerIcon: ({ size }) => (
+                  <Icon
+                    name="playlist-check"
+                    size={30}
+                    color={colors.background}
                   />
-
-           ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
-        }}/>   
-        
-        <Drawstack.Screen name="Result" component={Result}
-        options={{
-           title: 'Resultsearch',
-            drawerIcon: ({ size}) => (
-              <Icon
-                 name="alarm-panel-outline"
-                 size={size}
-                 color={colors.background} 
+                ),
+                headerStyle: { backgroundColor: colors.background },
+                headerTintColor: colors.primary,
+                headerTitleStyle: { fontWeight: 'bold' },
+              }}
+            />
+            <Drawstack.Screen
+              name="Result"
+              component={Result}
+              options={{
+                title: 'Resultsearch',
+                drawerIcon: ({ size }) => (
+                  <Icon
+                    name="alarm-panel-outline"
+                    size={size}
+                    color={colors.background}
                   />
-
-           ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
-        }}/>    
-          <Drawstack.Screen name="Parentnotice" component={Parentnotice}
-        options={{
-           title: 'Parentnotice',
-            drawerIcon: ({ size}) => (
-              <Icon
-                 name="bulletin-board"
-                 size={size}
-                 color={colors.background} 
+                ),
+                headerStyle: { backgroundColor: colors.background },
+                headerTintColor: colors.primary,
+                headerTitleStyle: { fontWeight: 'bold' },
+              }}
+            />
+            <Drawstack.Screen
+              name="Parentnotice"
+              component={Parentnotice}
+              options={{
+                title: 'Parentnotice',
+                drawerIcon: ({ size }) => (
+                  <Icon
+                    name="bulletin-board"
+                    size={size}
+                    color={colors.background}
                   />
-
-           ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
-        }}/> 
-       <Drawstack.Screen name="Receipt" component={Receipt}
-        options={{
-           title: 'Receipt',
-            drawerIcon: ({ size}) => (
-              <Icon
-                 name="bulletin-board"
-                 size={size}
-                 color={colors.background} 
+                ),
+                headerStyle: { backgroundColor: colors.background },
+                headerTintColor: colors.primary,
+                headerTitleStyle: { fontWeight: 'bold' },
+              }}
+            />
+            <Drawstack.Screen
+              name="Receipt"
+              component={Receipt}
+              options={{
+                title: 'Receipt',
+                drawerIcon: ({ size }) => (
+                  <Icon
+                    name="bulletin-board"
+                    size={size}
+                    color={colors.background}
                   />
-
-           ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
-        }}/> 
-
-              <Drawstack.Screen name="Profile" component={Student}
-        options={{
-           title: 'Profile',
-            drawerIcon: ({ size}) => (
-              <Icon
-                 name="account"
-                 size={size}
-                 color={colors.background} 
+                ),
+                headerStyle: { backgroundColor: colors.background },
+                headerTintColor: colors.primary,
+                headerTitleStyle: { fontWeight: 'bold' },
+              }}
+            />
+            <Drawstack.Screen
+              name="Profile"
+              component={Student}
+              options={{
+                title: 'Profile',
+                drawerIcon: ({ size }) => (
+                  <Icon
+                    name="account"
+                    size={size}
+                    color={colors.background}
                   />
-
-           ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
-        }}/>                
-    </Drawstack.Navigator>
+                ),
+                headerStyle: { backgroundColor: colors.background },
+                headerTintColor: colors.primary,
+                headerTitleStyle: { fontWeight: 'bold' },
+              }}
+            />
+          </Drawstack.Navigator>
   )
 }
 export const DrawStack5 = () => {
