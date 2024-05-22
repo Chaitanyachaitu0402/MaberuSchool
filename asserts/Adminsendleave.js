@@ -11,7 +11,7 @@ export default function Leaveadd({navigation}) {
 
     const { colors } = useTheme();
     const home=()=>{
-        navigation.navigate("schooldrawer5")
+        navigation.navigate("Teacherpendingleave")
     }
     const [leavevalue, setleaveValue] = useState(null);
 

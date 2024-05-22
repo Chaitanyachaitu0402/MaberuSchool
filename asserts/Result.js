@@ -42,7 +42,7 @@
 // }
 
 import React, { useState, useEffect } from 'react';
- import { View, Text, StyleSheet, FlatList, Dimensions,Image } from 'react-native';
+ import { View, Text, StyleSheet, FlatList, Dimensions,Image, SafeAreaView, ScrollView } from 'react-native';
 import { Card, useTheme, Button, Menu ,TextInput} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
@@ -50,16 +50,23 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Dropdown } from 'react-native-element-dropdown';
 
 const Table = ({navigation}) => {
-  const [classvalue, setclassvalue] = useState(null);
 
-  const data1 = [
-    { label: 'Quaterly', value: '1' },
-    { label: 'Annual', value: '2' },
-    { label: 'Final', value: '3' },
-    { label: 'Prefinal', value: '3' },
-  ]
+  const [leavevalue, setleaveValue] = useState(null);
+
+    const data = [
+        { label: 'Quaterly', value: '1' },
+        { label: 'HalfYeary', value: '2' },
+        { label: 'Annally', value: '3' },
+       
+    ];
+
     const{colors}=useTheme();
+
   return (
+    <SafeAreaView>
+      <ScrollView>
+
+    
     <View style={{margin:5,backgroundColor:colors.primary,flex:1}}> 
                     <Image source={require("./Image/School.jpg")} style={{ width: "30%", height: 99, marginStart: 5, alignSelf: 'center', margin: 6 }}></Image>
 
@@ -71,28 +78,27 @@ const Table = ({navigation}) => {
       <Text style={{fontSize:16,color:colors.background,fontWeight:'bold',alignSelf:'center'}}>Class:II</Text>
       </View>
 
-      <View>
-                       <Dropdown
-                          style={[styles.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
-                          placeholderStyle={[styles.placeholderStyle, { color: colors.text }]}
-                          selectedTextStyle={[styles.selectedTextStyle, { color: colors.text }]}
-
-                           inputSearchStyle={styles.inputSearchStyle}
-                           iconStyle={styles.iconStyle}
-                           data={data1}
-                           search
-                           maxHeight={400}
-                           labelField="label"
-                           valueField="value"
-                           placeholder="Select exam type"
-                           searchPlaceholder="Search..."
-                           value={classvalue}
-                           onChange={item => {
-                               setclassvalue(item.value);
-                           }}
-                           
-                       />
-                   </View>
+      <View >
+                        <Dropdown
+                            style={styles.dropdown}
+                            placeholderStyle={styles.placeholderStyle}
+                            selectedTextStyle={styles.selectedTextStyle}
+                            inputSearchStyle={styles.inputSearchStyle}
+                            // iconStyle={styles.iconStyle}
+                            data={data}
+                            search
+                            maxHeight={400}
+                            labelField="label"
+                            valueField="value"
+                            placeholder="Select section"
+                            searchPlaceholder="Search..."
+                            value={leavevalue}
+                            onChange={item => {
+                                setleaveValue(item.value);
+                            }}
+                       
+                        />
+                    </View>
     <View style={{ flexDirection: 'column',borderWidth: 1 ,  borderColor: 'black',margin: 8,borderRadius:5}}>
         
       <View style={{flexDirection: 'row',justifyContent: 'space-between',borderBottomWidth: 1, borderBottomColor: 'black', height: 57,backgroundColor:colors.bg}}>
@@ -148,10 +154,12 @@ const Table = ({navigation}) => {
 
     </View>
     </View>
+    </ScrollView>
+    </SafeAreaView>
 
   );
 };
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
 
   dropdown: {
 
@@ -162,20 +170,22 @@ const style = StyleSheet.create({
       borderWidth: 1,
       justifyContent: 'center',
       alignSelf: 'center',
-      height: 57,
+      height: 50,
       marginTop: 20
   },
- 
+  icon: {
+      margin: 10,
+  },
   placeholderStyle: {
       fontSize: 16,
       height: 20,
       color: 'black',
       alignSelf: 'center',
-      justifyContent: 'center',margin:6
+      justifyContent: 'center',margin:7
   },
   selectedTextStyle: {
-      fontSize: 16,
-      color: '#000000',columnGap:7,margin:7,width:'88%',alignSelf:'center'
+      fontSize: 19,
+      color: 'black',margin:5
 
   },
   iconStyle: {
@@ -185,20 +195,6 @@ const style = StyleSheet.create({
   inputSearchStyle: {
       height: 40,
       fontSize: 16,
- },
-});
-const styles = StyleSheet.create({
-  container: {
-   
-  },
-  row: {
-     // Adjust the height as needed
-  },
-  cell: {
-    flex: 1,
-    textAlign: 'center',
-    padding: 10,
-    height: '100%', // Cell height same as row height
   },
 });
 

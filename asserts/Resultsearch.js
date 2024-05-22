@@ -105,9 +105,7 @@ export default function Resultsearch({navigation}) {
                             onChange={item => {
                                 setleaveValue(item.value);
                             }}
-                        // renderLeftIcon={() => (
-                        //     <Icon style={styles.icon} color="black" name="safety-goggles" size={20} />
-                        // )}
+                       
                         />
                     </View>
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text}  placeholder='Student id' style={{ width: '87%', borderColor: colors.background, borderWidth: 1, backgroundColor: colors.primary, marginTop: 11, alignSelf: 'center', }}></TextInput>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
@@ -34,4 +33,3 @@ export default function Leavesections({navigation}){
     </View>
 
   )}
- 

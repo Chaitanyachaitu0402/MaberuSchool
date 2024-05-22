@@ -39,6 +39,7 @@ import Otp from './asserts/Otp';
 import Splash from './asserts/Splash';
 import Studentattendance from './asserts/Studentattendance';
 import Studentattendance2 from './asserts/Studentattendance2';
+import Searchtype from './asserts/Searchtype';
 
 import Teacherdetails from './asserts/Teacherdetails';
 import Timetable from './asserts/Timetable';
@@ -121,6 +122,7 @@ import Directorsendnotice from './asserts/Directorsendnotice';
 import Principalnoticelist from './asserts/Principalnoticelist';
 import Attendancecard from './asserts/Attendancecard';
 import Attendancecard2 from './asserts/Attendancecard2';
+import Homeworkedit from './asserts/Homeworkedit';
 
 import Allteachers from './asserts/Allteachers';
 
@@ -159,7 +161,7 @@ export default function App() {
         <stack.Screen name='Addsection' component={Addsection} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Editsection' component={Editsection} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Menubar' component={Menubar} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Editteacher' component={Editteacher} options={{ headerShown: false }}></stack.Screen>
+        <stack.Screen name='Editteacher' component={Editteacher} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Addbranch' component={Addbranch} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Editbranch' component={Editbranch} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Profile' component={Profile} options={{ headerShown: false }}></stack.Screen>
@@ -256,6 +258,8 @@ export default function App() {
         {/* <stack.Screen name='Allteachers' component={Allteachers} options={{ headerShown: true }}></stack.Screen> */}
         <stack.Screen name='Otherstaffdetails' component={Otherstaffdetails} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Topstack' component={Topstack} options={{ headerShown: true}}></stack.Screen>
+        <stack.Screen name='Searchtype' component={Searchtype} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Homeworkedit' component={Homeworkedit} options={{ headerShown: true }}></stack.Screen>
 
         <stack.Screen name='Sectionname' component={Sectionname} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='schooldrawer' component={DrawStacks} options={{ headerShown: false}}></stack.Screen>
@@ -805,7 +809,7 @@ export const DrawStack4 = () => {
     
              <Drawstack.Screen name="Parentleavelist" component={Parentleavelist}
         options={{
-           title: 'Parentleavelist',
+           title: 'Leave Response',
             drawerIcon: ({ size}) => (
               <Icon
                  name="playlist-check"
@@ -899,9 +903,9 @@ export const DrawStack5 = () => {
               />
            ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
         }}/>  
-      <Drawstack.Screen name="Adminsendleave" component={Adminsendleave}
+      <Drawstack.Screen name="Techerleavelist" component={Techerleavelist}
         options={{
-           title: 'Add Leave',
+           title: ' Leave Request',
             drawerIcon: ({ size}) => (
               <Icon
                  name="account-arrow-left-outline"
@@ -935,7 +939,6 @@ export const DrawStack5 = () => {
 }
 
 
-// bottom bar
 
 // export const Bottomstack4 = () => {
 //   return (

@@ -32,7 +32,7 @@ export default function Teacherhomeworklist({navigation}) {
             onDismiss={closeMenu}
             anchor={<Icon name='dots-vertical' color={colors.text} size={24} onPress={() => openMenu(index)} />} // Pass index to openMenu function
           >
-            <Menu.Item onPress={() => {navigation.navigate('Teacherworkcreate')}} title="Edit" />
+            <Menu.Item onPress={() => {navigation.navigate('Homeworkedit')}} title="Edit" />
             <Menu.Item onPress={() => {}} title="Delete" />
           </Menu>
         </View>

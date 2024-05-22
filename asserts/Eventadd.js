@@ -205,7 +205,7 @@ export default function Eventadd({navigation}) {
         <SafeAreaView>
             <ScrollView>
 
-                <View style={{ flex: 1, backgroundColor: colors.primary, height: Dimensions.get('window').height,bottom:8 }}>
+                <View style={{ flex: 1, backgroundColor: colors.primary,  }}>
 
                     {/* <View style={{ width: '100%', height: 77, backgroundColor: colors.background, flexDirection: 'row', columnGap: 14 }}>
                         <Icon name='arrow-left' color={colors.primary} size={24} style={{ marginTop: 20 }}></Icon>
@@ -295,6 +295,9 @@ export default function Eventadd({navigation}) {
                     <Icon name='plus' color={colors.text} size={44} style={{ alignSelf: 'center', justifyContent: 'center' }} onPress={AddPickers} />
                         <Text style={{ fontSize: 20, color: colors.primary, justifyContent: 'center', alignSelf: 'center' }}>Add Photos </Text>
                     </ImageBackground>
+                    <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 19, color: colors.text, fontWeight: 'bold' }} style={{ width: '52%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:9}} onPress={home}>
+                        ADD 
+                    </Button >
                 </View>
             </ScrollView>
         </SafeAreaView>

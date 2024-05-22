@@ -74,7 +74,3 @@ const ApprovalMenuFlatList = ({navigation}) => {
 };
 
 export default ApprovalMenuFlatList;
-
-
-
-

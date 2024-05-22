@@ -40,7 +40,7 @@ export default function Parentleaveadd({navigation}) {
     const [data, setdata] = useState("")
 
     const home=()=>{
-        navigation.navigate("schooldrawer4")
+        navigation.navigate("Pendingleavedetails")
     }
     return (
         // <SafeAreaView>
