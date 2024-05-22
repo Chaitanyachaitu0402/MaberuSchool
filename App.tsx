@@ -52,6 +52,7 @@ import Leaveadd from './asserts/Leaveadd';
 import Leaveedit from './asserts/Leaveedit';
 import Leavelist from './asserts/Leavelist';
 import Leavedetail from './asserts/Leavedetail';
+import Leavedetails from './asserts/Leavedetails';
 import Noticedetails from './asserts/Noticedetails';
 import Noticeedit from './asserts/Noticeedit';
 import Noticeadd from './asserts/Noticeadd';
@@ -196,6 +197,7 @@ export default function App() {
         <stack.Screen name='Leaveedit' component={Leaveedit} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Leavelist' component={Leavelist} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Leavedetail' component={Leavedetail} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Leavedetails' component={Leavedetails} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Noticeadd' component={Noticeadd} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Eventadd' component={Eventadd} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Parentleaveadd' component={Parentleaveadd} options={{ headerShown:true }}></stack.Screen>
