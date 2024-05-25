@@ -34,7 +34,7 @@ export default function Addclass({navigation}) {
               const response = await fetch('http://10.0.2.2:3000/class/create_class', {
                   method: 'POST',
                   body: JSON.stringify({
-                      class_Name: classname,
+                      class_name: classname,
                   }),
                   headers: {
                       'Accept': 'application/json',

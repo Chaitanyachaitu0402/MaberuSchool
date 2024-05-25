@@ -1,21 +1,42 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ImageBackground, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, Image, ImageBackground, StyleSheet, ActivityIndicator, Alert } from 'react-native';
 import { TextInput, useTheme, Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 export default function Login() {
   const { colors } = useTheme();
   const navigation = useNavigation();
-  const [admission, setAdmission] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignIn = () => {
+  const handleSignIn = async () => {
     setIsLoading(true);
-    setTimeout(() => {
+    try {
+      const response = await axios.post('http://10.0.2.2:3000/user/login-user', {
+        email,
+        password
+      });
+
+      if (response.data.success) {
+        const { role } = response.data;
+        setIsLoading(false);
+
+        if (role === 'admin') {
+          navigation.navigate('schooldrawer'); // Navigate to admin screen
+        } else {
+          navigation.navigate('schooldrawer'); // Example navigation for non-admin users
+        }
+      } else {
+        setIsLoading(false);
+        Alert.alert('Login Failed', response.data.message || 'Invalid email or password');
+      }
+    } catch (error) {
       setIsLoading(false);
-      navigation.navigate('schooldrawer3');
-    }, 2000); // Simulate a network request delay
+      Alert.alert('Error', 'Something went wrong. Please try again later.');
+      console.error('Login error:', error);
+    }
   };
 
   return (
@@ -26,14 +47,14 @@ export default function Login() {
 
         <View style={styles.inputContainer}>
           <TextInput
-            value={admission}
-            onChangeText={setAdmission}
+            value={email}
+            onChangeText={setEmail}
             textColor={colors.text}
             placeholderTextColor={colors.text}
-            textContentType='name'
+            textContentType='emailAddress'
             activeUnderlineColor='transparent'
             underlineColor='transparent'
-            placeholder='Admission / Register id'
+            placeholder='Email'
             style={styles.textInput}
           />
         </View>

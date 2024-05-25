@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image,Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Dropdown } from 'react-native-element-dropdown';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -48,6 +48,13 @@ export default function Addsection({ navigation }) {
     setsectiondetails(name)
     console.log(name);
   }
+
+  const [classname, setclassdetails] = useState("")
+    const classdetails = (name) => {
+      setclassdetails(name)
+      console.log(name);
+    }
+
   const [strengthcount, setstrengthcount] = useState("")
   const strengthcountdetails = (name) => {
     setstrengthcount(name)
@@ -64,85 +71,47 @@ export default function Addsection({ navigation }) {
   }
 
 
+  // Inside your React Native component
   const handleGetStarted2 = async () => {
-            try {
-                const response = await fetch('http://10.0.2.2:3000/class/create_class', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        class_Name: classname,
-                    }),
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                });
-
-                console.log("done2", response)
-                if (!response.ok) {
-                    throw new Error('Failed to details. Status: ' + response.status);
-                }
-                const data = await response.json();
-                console.log("Student details created ===> ", data)
-                if (data.success) {
-                    // Show alert box
-                    Alert.alert("New Class Created Successfully");
-                    // Navigate to Sectiondetails screen
-                    navigation.navigate('Classlist');
-                } else {
-                    Alert.alert("Error in creating the student details");
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-
-
-  const Addsection = async () => {
     try {
-      const sectionresponse = await fetch("https://localhost.com:3000/create-section", {
-        method: "POST",
-        body: JSON.stringify({ name: sectionname, strength: strengthcount, className: classvalue, teacherName: teachervalue }),
-        Authorization: `Bearer ${accessToken}`,
-        headers: { Accept: "application/JSON, text/plain, */*", 'Content-Type': 'application/json; charset=UTF-8' }
-      }).then((Res) => { return Res.json() });
+      const response = await fetch('http://10.0.2.2:3000/section/create_section', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+        },
+        body: JSON.stringify({
+          class_name: classvalue,
+          section_name: sectionname,
+          section_strength: strengthcount,
+          teacher_name: teachervalue
+        })
+      });
 
-      const sectiondata = await sectionresponse.then(data);
-      if (sectiondata.success) {
-        Alert.alert('successfully section has added')
+      if (!response.ok) {
+        if (response.status === 401) {
+          await handleRefreshToken();
+          return;
+        }
+        throw new Error('Failed to create section. Status: ' + response.status);
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
+        Alert.alert("Success", "New Section Created Successfully");
+        navigation.navigate('Classlist');
       } else {
-        if (sectiondata.message == "invalid token") {
-          generateRefreshtoken(refreshtoken);
-        } else {
-          Alert.alert('this section cant be added right now')
-        }
+        Alert.alert("Error", "Failed to create section");
       }
-
     } catch (error) {
-      Alert.alert(error)
+      Alert.alert("Error", error.message);
     }
+  };
 
-    const generateRefreshtoken = async (refreshtoken) => {
-      try {
-        const sectionresponse = await fetch("https://localhost.com:3000/generaterefreshtoken", {
-          method: "POST", Authorization: `Bearer ${refreshtoken}`
-        }).then((Res) => { return Res.JSON() });
 
-        const sectiondata = sectionresponse
 
-        if (sectionresponse.success) {
-          AsyncStorage.setItem("accesstoken", sectiondata.accesstoken)
-          AsyncStorage.setItem("refreshtoken", sectiondata.refreshtoken)
-          await Addsection();
-        }
-      } catch (error) {
-
-      }
-    }
-  }
-
-  useEffect(() => {
-    getuserdata()
-  }, [])
 
   {/* <Text> Integration End </Text> */ }
 
@@ -152,12 +121,14 @@ export default function Addsection({ navigation }) {
 
       <Image source={require("./Image/School.jpg")} style={{ height: 150, width: 150, justifyContent: 'center', alignSelf: 'center', borderRadius: 10, marginTop: 30 }}></Image>
 
+          <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' onChangeText={classdetails} value={classname} activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' placeholder='Class Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 30 }}></TextInput>
+
       <View>
         <Dropdown
               style={[styles.dropdown,{borderBottomColor: colors.text,borderColor: colors.text  }]}
               placeholderStyle={[styles.placeholderStyle,{color: colors.text}]}
               selectedTextStyle={[styles.selectedTextStyle,{color:  colors.text}]}
-                 
+
           inputSearchStyle={styles.inputSearchStyle}
           iconStyle={styles.iconStyle}
           data={data}
@@ -171,7 +142,7 @@ export default function Addsection({ navigation }) {
           onChange={item => {
             setClassValue(item.value);
           }}
-        
+
         />
       </View>
 
@@ -197,7 +168,7 @@ export default function Addsection({ navigation }) {
           onChange={item => {
             setTeacherValue(item.value);
           }}
-       
+
         />
       </View>
 
@@ -205,7 +176,7 @@ export default function Addsection({ navigation }) {
 
       <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={strengthcountdetails} value={strengthcount} placeholder='No of students' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 30 }}></TextInput>
 
-      <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.background, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 40 }} onPress={() => navigation.navigate('Sectionname')}>
+      <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.background, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 40 }} onPress={handleGetStarted2}>
         ADD SECTION
       </Button >
 
