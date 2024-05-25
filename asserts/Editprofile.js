@@ -136,7 +136,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState, useEffect } from 'react';
 import * as ImagePicker from 'react-native-image-picker';
 
-export default function Student() {
+export default function Student({navigation}) {
     const { colors } = useTheme();
 
     const [fileUris, setfileUris] = useState("");
@@ -197,7 +197,7 @@ export default function Student() {
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} placeholder='Email'  style={{ width: '87%', borderColor: colors.background, borderWidth: 1, backgroundColor: colors.primary, marginTop: 11, alignSelf: 'center', }}></TextInput>
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} placeholder='Address' multiline={true} style={{ width: '87%',height:77, borderColor: colors.background, borderWidth: 1, backgroundColor: colors.primary, marginTop: 11, alignSelf: 'center', }}></TextInput>
 
-                    <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 6, marginTop: 70 }} >
+                    <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 6, margin:9 }}onPress={()=>navigation.navigate('schooldrawer3')} >
           SAVE
         </Button >
 

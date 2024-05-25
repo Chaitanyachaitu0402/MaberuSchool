@@ -124,10 +124,16 @@ import Principalnoticelist from './asserts/Principalnoticelist';
 import Attendancecard from './asserts/Attendancecard';
 import Attendancecard2 from './asserts/Attendancecard2';
 import Homeworkedit from './asserts/Homeworkedit';
-
+import Adminprofile from './asserts/Adminprofile';
 import Allteachers from './asserts/Allteachers';
-
 import Headnoticelist from './asserts/Headnoticelist';
+import Admineditprofile from './asserts/Admineditprofile';
+import Principalprofile from './asserts/Principalprofile';
+import Principaleditprofile from './asserts/Principaleditprofile';
+import Directorprofile from './asserts/Directorprofile';
+import Directoreditprofile from './asserts/Directoreditprofile';
+
+
 
 const stack = createNativeStackNavigator();
 const schoolbotstack = createBottomTabNavigator();
@@ -162,7 +168,7 @@ const CustomDrawerContent = (props) => {
       <DrawerItemList {...props} />
       <DrawerItem
         label="Logout"
-        icon={() => <Icon name="logout" size={24} color={colors.text} />}
+        icon={() => <Icon name="logout" size={24} color={colors.animate} />}
         onPress={handleLogout}
         style={{ marginTop: 10 }}
       />
@@ -220,6 +226,7 @@ export default function App() {
         <stack.Screen name='Editstaff' component={Editstaff} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Adminsendleave' component={Adminsendleave} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Directorsendnotice' component={Directorsendnotice} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Adminprofile' component={Adminprofile} options={{ headerShown: true }}></stack.Screen>
 
         <stack.Screen name='Teacherdetails' component={Teacherdetails} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Splash' component={Splash} options={{ headerShown: false }}></stack.Screen>
@@ -290,6 +297,7 @@ export default function App() {
         <stack.Screen name='Staffattendancecreates' component={Staffattendancecreates} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Attendancecard' component={Attendancecard} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Attendancecard2' component={Attendancecard2} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Admineditprofile' component={Admineditprofile} options={{ headerShown: true }}></stack.Screen>
 
         <stack.Screen name='Techerleavelist' component={Techerleavelist} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Staffaddnotice' component={Staffaddnotice} options={{ headerShown: true }}></stack.Screen>
@@ -300,6 +308,10 @@ export default function App() {
         <stack.Screen name='Topstack' component={Topstack} options={{ headerShown: true}}></stack.Screen>
         <stack.Screen name='Searchtype' component={Searchtype} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Homeworkedit' component={Homeworkedit} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Principalprofile' component={Principalprofile} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Principaleditprofile' component={Principaleditprofile} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Directorprofile' component={Directorprofile} options={{ headerShown: true }}></stack.Screen>
+        <stack.Screen name='Directoreditprofile' component={Directoreditprofile} options={{ headerShown: true }}></stack.Screen>
 
         <stack.Screen name='Sectionname' component={Sectionname} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='schooldrawer' component={DrawStacks} options={{ headerShown: false}}></stack.Screen>
@@ -479,17 +491,7 @@ export const DrawStacks = () => {
        
 
 
- {/* <Drawstack.Screen name="Directorsendnotice" component={Directorsendnotice}
-        options={{
-           title: 'Notice',
-            drawerIcon: ({ size}) => (
-              <Icon
-                 name="bell-outline"
-                 size={30}
-                 color={colors.background} 
-              />
-           ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
-        }}/>       */}
+
         
  <Drawstack.Screen name="Leavesections" component={Leavesections}
         options={{
@@ -548,7 +550,7 @@ export const DrawStacks = () => {
 
           ),
         })}/>  
-         <Drawstack.Screen name="Profile" component={Profile}
+         <Drawstack.Screen name="Adminprofile" component={Adminprofile}
         options={{
            title: 'Profile',
             drawerIcon: ({ size}) => (
@@ -668,7 +670,7 @@ export const DrawStack2 = () => {
              
            ), headerStyle: {backgroundColor: colors.background,   },headerTintColor: colors.primary,   headerTitleStyle: { fontWeight: 'bold',  },
         }}/> 
-         <Drawstack.Screen name="Profile" component={Profile}
+         <Drawstack.Screen name="Principalprofile" component={Principalprofile}
         options={{
            title: 'Profile',
             drawerIcon: ({ size}) => (
@@ -984,7 +986,7 @@ export const DrawStack5 = () => {
         }}/> 
       
 
-         <Drawstack.Screen name="Profile" component={Profile}
+         <Drawstack.Screen name="Directorprofile" component={Directorprofile}
         options={{
            title: 'Profile',
             drawerIcon: ({ size}) => (
@@ -1007,7 +1009,7 @@ export const DrawStack5 = () => {
 //   return (
 //     <schoolbotstack.Navigator >
 //         <schoolbotstack.Screen name='Schooldrawer5' component={DrawStack5} options={{
-//         title: 'systemadmin',
+//         title: 'Director',
 //         headerShown: false,
 //         tabBarIcon: ({ focused }) => (
 //           <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
@@ -1036,7 +1038,7 @@ export const DrawStack5 = () => {
 //         ), tabBarLabelStyle: { fontSize: 15, color: 'black' }
 //       }} /> 
 //        <schoolbotstack.Screen name='Schooldrawer' component={DrawStacks} options={{
-//         title: 'Director',
+//         title: 'system administarate',
 //         headerShown: false,
 //         tabBarIcon: ({ focused }) => (
 //           <Icon name='barley' color='black' size={30} style={{ alignSelf: 'center', justifyContent: 'center' }} />
