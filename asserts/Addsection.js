@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image,Alert } from 'react-native'
+import { View, StyleSheet, Image,Alert,ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Dropdown } from 'react-native-element-dropdown';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -55,6 +55,18 @@ export default function Addsection({ navigation }) {
       console.log(name);
     }
 
+     const [teachername, setteacherdetails] = useState("")
+        const teacherdetails = (name) => {
+          setteacherdetails(name)
+          console.log(name);
+        }
+
+    const [branchname, setbranchdetails] = useState("")
+            const branchdetails = (name) => {
+              setbranchdetails(name)
+              console.log(name);
+            }
+
   const [strengthcount, setstrengthcount] = useState("")
   const strengthcountdetails = (name) => {
     setstrengthcount(name)
@@ -82,10 +94,11 @@ export default function Addsection({ navigation }) {
           'Authorization': `Bearer ${accessToken}`
         },
         body: JSON.stringify({
-          class_name: classvalue,
+          class_name: classname,
           section_name: sectionname,
           section_strength: strengthcount,
-          teacher_name: teachervalue
+          teacher_name: teachername,
+          branch_name:branchname
         })
       });
 
@@ -101,7 +114,7 @@ export default function Addsection({ navigation }) {
 
       if (data.success) {
         Alert.alert("Success", "New Section Created Successfully");
-        navigation.navigate('Classlist');
+        navigation.navigate('Sectionname');
       } else {
         Alert.alert("Error", "Failed to create section");
       }
@@ -116,61 +129,26 @@ export default function Addsection({ navigation }) {
   {/* <Text> Integration End </Text> */ }
 
   return (
-
+    <ScrollView>
     <View style={{ flex: 1, backgroundColor: colors.primary, justifyContent: 'center' }}>
 
       <Image source={require("./Image/School.jpg")} style={{ height: 150, width: 150, justifyContent: 'center', alignSelf: 'center', borderRadius: 10, marginTop: 30 }}></Image>
 
           <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' onChangeText={classdetails} value={classname} activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' placeholder='Class Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 30 }}></TextInput>
 
-      <View>
-        <Dropdown
-              style={[styles.dropdown,{borderBottomColor: colors.text,borderColor: colors.text  }]}
-              placeholderStyle={[styles.placeholderStyle,{color: colors.text}]}
-              selectedTextStyle={[styles.selectedTextStyle,{color:  colors.text}]}
 
-          inputSearchStyle={styles.inputSearchStyle}
-          iconStyle={styles.iconStyle}
-          data={data}
-          search
-          maxHeight={400}
-          labelField="label"
-          valueField="value"
-          placeholder="Select Class"
-          searchPlaceholder="Search..."
-          value={classvalue}
-          onChange={item => {
-            setClassValue(item.value);
-          }}
-
-        />
-      </View>
 
       {/* <Text> Dropdown view above </Text> */}
 
       <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' onChangeText={sectiondetails} value={sectionname} activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' placeholder='Section Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 30 }}></TextInput>
 
-      <View>
-        <Dropdown
-          style={[styles.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
-          placeholderStyle={[styles.placeholderStyle, { color: colors.text }]}
-          selectedTextStyle={[styles.selectedTextStyle, { color: colors.text }]}
-          inputSearchStyle={styles.inputSearchStyle}
-          iconStyle={styles.iconStyle}
-          data={dataa}
-          search
-          maxHeight={400}
-          labelField="label"
-          valueField="value"
-          placeholder="Select Teacher"
-          searchPlaceholder="Search..."
-          value={teachervalue}
-          onChange={item => {
-            setTeacherValue(item.value);
-          }}
 
-        />
-      </View>
+
+       <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={teacherdetails} value={teachername} placeholder='Teacher Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 30 }}></TextInput>
+
+
+        <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={branchdetails} value={branchname} placeholder='Branch Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 30 }}></TextInput>
+
 
       {/* <Text> Dropdown view above </Text> */}
 
@@ -184,6 +162,7 @@ export default function Addsection({ navigation }) {
 
 
     </View>
+    </ScrollView>
   )
 }
 

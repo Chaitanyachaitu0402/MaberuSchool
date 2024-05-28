@@ -173,7 +173,7 @@
 
 
 import React, { useState } from 'react';
-import { View, TextInput,  StyleSheet, Text } from 'react-native';
+import { View, TextInput,  StyleSheet, Text,Image } from 'react-native';
 import { Button,useTheme } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -226,6 +226,9 @@ const ConfirmPasswordScreen = () => {
 
   return (
     <View style={styles.container}>
+    <Image source={require("./Image/School.jpg")} style={{ height: 150, width: 150, borderRadius: 10, justifyContent: 'center', alignSelf: 'center',marginBottom:40 }}></Image>
+                      <Text style={{ fontSize: 30,fontWeight:"bold", alignSelf: 'center', color: "black", marginBottom:20 }}>Password Reset</Text>
+
       <View style={styles.inputContainer}>
         <Icon name="lock" size={20} />
         <TextInput
@@ -235,6 +238,7 @@ const ConfirmPasswordScreen = () => {
           onChangeText={handlePasswordChange}
           style={styles.input}
           placeholderTextColor={colors.text}
+          style={{padding:15,width:"90%",textAlign:"center"}}
         />
         <Icon
           name={isPasswordVisible ? 'eye-off' : 'eye'}
@@ -242,7 +246,7 @@ const ConfirmPasswordScreen = () => {
           onPress={togglePasswordVisibility}
         />
       </View>
-      <Text>Password Strength: {passwordStrength}</Text>
+
       <View style={styles.inputContainer}>
         <Icon name="lock" size={20} />
         <TextInput
@@ -251,6 +255,7 @@ const ConfirmPasswordScreen = () => {
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           style={styles.input}
+          style={{padding:15,width:"90%",textAlign:"center"}}
         />
         <Icon
           name={isConfirmPasswordVisible ? 'eye-off' : 'eye'}
@@ -258,7 +263,7 @@ const ConfirmPasswordScreen = () => {
           onPress={toggleConfirmPasswordVisibility}
         />
       </View>
-      <Button style={{ width: "35%", height: 44, backgroundColor: colors.bg, alignSelf: 'center', marginTop: 13 }} labelStyle={{ fontSize: 18, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center', marginTop: 10,color:colors.text }}onPress={handleConfirm}>Save</Button>
+      <Button style={{ width: "50%", height: 44, backgroundColor: colors.bg, alignSelf: 'center', marginTop: 13 }} labelStyle={{ fontSize: 18, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center', marginTop: 10,color:colors.text }}onPress={handleConfirm}>Save</Button>
     </View>
   );
 };
@@ -282,6 +287,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     marginLeft: 10,
+    textAlign:"center",
   },
 });
 

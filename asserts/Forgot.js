@@ -5,8 +5,8 @@ import { TextInput, useTheme, Button } from 'react-native-paper'
 
 export default function Forgot({navigation}) {
     const { colors } = useTheme();
-   
-    
+
+
     return (
 
         <View style={{ flex: 1, backgroundColor: colors.background, justifyContent: 'center' }}>
@@ -15,15 +15,17 @@ export default function Forgot({navigation}) {
 
             <View style={{ justifyContent: 'center' }}>
 
-                <Text style={{ fontSize: 16, alignSelf: 'center', color: colors.primary, marginTop: 40 }}>Please enter your registered email ID</Text>
+                <Text style={{ fontSize: 30,fontWeight:"bold", alignSelf: 'center', color: colors.primary, marginTop: 20 }}>Password Reset</Text>
+
+
+                <Text style={{ fontSize: 18, alignSelf: 'center', color: colors.primary, marginTop: 30 }}>Please enter your registered email ID</Text>
 
                 <View style={{ width: '80%', height: 60, alignSelf: 'center', flexDirection: 'row', backgroundColor: colors.primary, borderColor: colors.primary, padding: 1, borderRadius: 25, marginTop: 40 }}>
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeUnderlineColor='transparent' underlineColor='transparent' placeholder='Email' style={{ fontSize: 18, width: '100%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', justifyContent: 'center', textAlign: 'center' }}></TextInput>
                 </View>
 
-                <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 6, marginTop: 40 }} onPress={()=>navigation.navigate('Otp')}>  NEXT</Button >
+                <Button  buttonColor={colors.bg} labelStyle={{ fontSize: 20, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 6, marginTop: 40, color:"white" }} onPress={()=>navigation.navigate('Confirmpass')}>  NEXT</Button >
 
-                <Text style={{ fontSize: 16, alignSelf: 'center', color: colors.primary, marginTop: 10 }}>I accept the Terms and Conditions</Text>
 
             </View>
 

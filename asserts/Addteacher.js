@@ -35,24 +35,19 @@ const Addteacher = ({navigation}) => {
 
     const handleGetStarted2 = async () => {
             try {
-                const response = await fetch('http://10.0.2.2:3000/employees/create-employee', {
+                const response = await fetch('http://10.0.2.2:3000/user/create_User', {
                     method: 'POST',
                     body: JSON.stringify({
-                        First_Name: name,
+                        first_name: name,
                         gender: gender,
-                        Date_of_Birth:birthdate,
-//                        Admission_id:admission,
-//                        Joining_date:joindate,
-//                        Mother_Name:mothername,
-//                        Mother_Occupation:motheroccupation,
-//                        Father_Name:fathername,
-//                        Father_Occupation:fatheroccupation,
-//                        MobileNumber:mobilenumber,
-                        EmergencyContact:relationmobilenumber,
-//                        Present_Address:address,
-//                        Branch:Branchvalue,
-//                        Class:Classvalue,
-//                        Section:Sectionvalue,
+                        date_of_birth:birthdate,
+                        mobile_number:mobilenumber,
+                        joining_date:joindate,
+                        emergencycontact:relationmobilenumber,
+                        subject_department:selected,
+                        role:teacherRolevalue,
+
+
                     }),
                     headers: {
                         'Accept': 'application/json',
@@ -162,6 +157,24 @@ const Addteacher = ({navigation}) => {
          console.log(name);
      }
 
+     const [subjectname, setsubjectdetails] = useState("")
+          const subjectdetails = (name) => {
+              setsubjectdetails(name)
+              console.log(name);
+          }
+
+          const [rolename, setroledetails] = useState("")
+                    const roledetails = (name) => {
+                        setroledetails(name)
+                        console.log(name);
+                    }
+
+                    const [classname, setclassdetails] = useState("")
+                              const classdetails = (name) => {
+                                  setclassdetails(name)
+                                  console.log(name);
+                              }
+
      {/* <Text> Integration </Text> */ }
 
      const getuserdata = async () => {
@@ -172,54 +185,6 @@ const Addteacher = ({navigation}) => {
          setaccessToken(accessToken);
          setrefreshToken(refreshtoken);
      }
-
-     const Addteacher = async () => {
-         try {
-             const teacherresponse = await fetch("https:localhost.com:3000/create-teacher", {
-                 method: "POST",
-                 body: JSON.stringify({ name: name, gender: gender, birth: birthdate, join: joindate, mother: mothername, father: fathername, mobilenumber: mobilenumber, relation: relation, relationMobileNumber: relationmobilenumber, address: address, branch: Branchvalue, subject: subjectname, role: teacherRolevalue, authRole: role }),
-                 Authorization: `Bearer ${accessToken}`,
-                 headers: { Accept: "application/JSON, text/plain, */*", 'Content-Type': 'application/json; charset=UTF-8' }
-             });
-
-             const teacherdata = await teacherresponse.then(data);
-             if (teacherdata.success) {
-                 Alert.alert('successfully teacher has added')
-             } else {
-                 if (teacherdata.message == "invalid token") {
-                     generateRefreshtoken(refreshtoken);
-                 } else {
-                     Alert.alert('this teacher cant be added right now👌')
-                 }
-             }
-
-         } catch (error) {
-             Alert.alert(error)
-         }
-
-         const generateRefreshtoken = async (refreshtoken) => {
-             try {
-                 const teacherresponse = await fetch("https:localhost.com:3000/generaterefreshtoken", {
-                     method: "POST", Authorization: `Bearer ${refreshtoken}`
-                 }).then((Res) => { return Res.JSON() });
-
-                 const teacherdata = teacherresponse
-
-                 if (teacherresponse.success) {
-                     AsyncStorage.setItem("accesstoken", teacherdata.accesstoken)
-                     AsyncStorage.setItem("refreshtoken", teacherdata.refreshtoken)
-                     await Addteacher();
-                 }
-             } catch (error) {
-
-             }
-         }
-     }
-
-     useEffect(() => {
-         getuserdata()
-     }, [])
-
      {/* <Text> Integration End </Text> */ }
 
      return (
@@ -309,85 +274,15 @@ const Addteacher = ({navigation}) => {
 
                      {/* <Text> Date picker view above </Text> */}
 
-                 <View style={styless.container}>
-      <MultiSelect
-       style={[styles.dropdown,{borderBottomColor: colors.text,borderColor: colors.text,shadowColor:colors.text,backgroundColor:colors.primary  }]}
-       placeholderStyle={[styles.placeholderStyle,{color: colors.text}]}
-       selectedTextStyle={[styles.selectedTextStyle,{color:  colors.text}]}
-         
-      inputSearchStyle={styles.inputSearchStyle}
-      iconStyle={styles.iconStyle}
-      data={data}
-      labelField="label"
-      valueField="value"
-      placeholder="Select Subject"
-      value={selected}
-      search
-      searchPlaceholder="Search..."
-      onChange={item => {
-        setSelected(item);
-      }}
-      
-      renderItem={renderItem}
-      renderSelectedItem={(item, unSelect) => (
-        <TouchableOpacity onPress={() => unSelect && unSelect(item)}>
-          <View style={{alignSelf:'center',margin:7}}>
-            <Text style={styles.textSelectedStyle}>{item.label}</Text>
-            <Icon color={colors.text} name="delete" size={24} />
-          </View>
-        </TouchableOpacity>
-      )}
-    />
-  </View>
+                                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={subjectdetails} value={subjectname} placeholder='Subject Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
+
                     {/* <Text> Dropdown views above </Text> */}
 
-                    <View>
-                        <Dropdown
-                              style={[styles.dropdown,{borderBottomColor: colors.text,borderColor: colors.text  }]}
-                              placeholderStyle={[styles.placeholderStyle,{color: colors.text}]}
-                              selectedTextStyle={[styles.selectedTextStyle,{color:  colors.text}]}
-                                
-                            inputSearchStyle={styles.inputSearchStyle}
-                            iconStyle={styles.iconStyle}
-                            data={dataa}
-                            search
+                                        <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={classdetails} value={classname} placeholder='Class Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
 
-                            maxHeight={400}
-                            labelField="label"
-                            valueField="value"
-                            placeholder="Select Role"
-                            searchPlaceholder="Search..."
-                            value={teacherRolevalue}
-                            onChange={item => {
-                                setteacherRolevalue(item.value);
-                            }}
-                            
-                        />
-                    </View>
 
-                    <View>
-                        <Dropdown
-                              style={[styles.dropdown,{borderBottomColor: colors.text,borderColor: colors.text  }]}
-                              placeholderStyle={[styles.placeholderStyle,{color: colors.text}]}
-                              selectedTextStyle={[styles.selectedTextStyle,{color:  colors.text}]}
-                                
-                            inputSearchStyle={styles.inputSearchStyle}
-                            iconStyle={styles.iconStyle}
-                            data={data1}
-                            search
+                                        <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={roledetails} value={rolename} placeholder='Role' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
 
-                            maxHeight={400}
-                            labelField="label"
-                            valueField="value"
-                            placeholder="Select Class"
-                            searchPlaceholder="Search..."
-                            value={classvalue}
-                            onChange={item => {
-                                setclassvalue(item.value);
-                            }}
-                            
-                        />
-                    </View>
                     {/* <Text> Dropdown views above </Text> */}
 
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={sectiondetails} value={sectionname} placeholder='Section Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>

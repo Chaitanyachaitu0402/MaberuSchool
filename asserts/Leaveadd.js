@@ -55,52 +55,43 @@ export default function Leaveadd({navigation}) {
         setrefreshToken(refreshtoken);
     }
 
-    const Addleave = async () => {
-        try {
-            const leaveresponse = await fetch("https://localhost.com:3000/create-leave", {
-                method: "POST",
-                body: JSON.stringify({ leaveType: leavevalue, startDate: leavedate, endDate: date ,days:day,reason:reason}),
-                Authorization: `Bearer ${accesstoken}`,
-                headers: { Accept: "application/JSON, text/plain, */*", 'Content-Type': 'application/json; charset=UTF-8' }
-            });
+    const handleGetStarted2 = async () => {
+                try {
+                    const response = await fetch('http://10.0.2.2:3000/user/create_User', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            first_name: name,
+                            gender: gender,
+                            mobile_number:mobilenumber,
+                            joining_date:joindate,
+                            emergencycontact:relationmobilenumber,
+                            role:rolename,
+                            Address:address
+                        }),
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                    });
 
-            const leavedata = await leaveresponse.then(data);
-            if (leavedata.success) {
-                Alert.alert('successfully teacher has added')
-            } else {
-                if (leavedata.message == "invalid token") {
-                    generateRefreshtoken(refreshtoken);
-                } else {
-                    Alert.alert('this leave cant be added right now👌')
+                    console.log("done2", response)
+                    if (!response.ok) {
+                        throw new Error('Failed to details. Status: ' + response.status);
+                    }
+                    const data = await response.json();
+                    console.log("Non-Teaching details created ===> ", data)
+                    if (data.success) {
+                        // Show alert box
+                        Alert.alert("Non-Teaching Details Created Successfully");
+                        // Navigate to Sectiondetails screen
+                        navigation.navigate('home');
+                    } else {
+                        Alert.alert("Error in creating the student details");
+                    }
+                } catch (error) {
+                    console.error('Error fetching data:', error);
                 }
-            }
-
-        } catch (error) {
-            Alert.alert(error)
-        }
-
-        const generateRefreshtoken = async (refreshtoken) => {
-            try {
-                const leaveresponse = await fetch("https://localhost.com:3000/generaterefreshtoken", {
-                    method: "POST", Authorization: `Bearer ${refreshtoken}`
-                }).then((Res) => { return Res.JSON() });
-
-                const leavedata = leaveresponse
-
-                if (leaveresponse.success) {
-                    AsyncStorage.setItem("accesstoken", leavedata.accesstoken)
-                    AsyncStorage.setItem("refreshtoken", leavedata.refreshtoken)
-                    await Addleave();
-                }
-            } catch (error) {
-
-            }
-        }
-    }
-
-    useEffect(() => {
-        getuserdata()
-    }, [])
+            };
 
     return (
 
@@ -202,7 +193,7 @@ export default function Leaveadd({navigation}) {
                     </View>
 
                  
- <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 17, color: colors.text, fontWeight: 'bold' }} style={{ width: '52%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:9}} onPress={home}>
+ <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 17, color: colors.text, fontWeight: 'bold' }} style={{ width: '52%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:9}} onPress={handleGetStarted2}>
                         APPLY
                     </Button >
                 </View>

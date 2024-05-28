@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Dimensions, Image, SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Dimensions, Image, SafeAreaView, ScrollView,Alert } from 'react-native';
 import { Card, useTheme, Button, Menu, TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ShimmerPlaceholder from 'react-native-shimmer-placeholder';
@@ -32,90 +32,124 @@ export default function Createfee({navigation}) {
     const [classvalue, setClassValue] = useState(null);
     const [Sectionvalue, setSectionValue] = useState(null);
 
-    const [name, setname] = useState("")
-    const namedetails = (name) => {
-        setname(name)
-        console.log(name);
-    }
+
     const [admission, setadmission] = useState("")
     const admissioniddetails = (name) => {
         setadmission(name)
         console.log(name);
     }
+    const [admission2, setadmission2] = useState("")
+        const transportdetails = (name) => {
+            setadmission2(name)
+            console.log(name);
+        }
     const [amount, setamount] = useState("")
     const amountdetails = (name) => {
         setamount(name)
         console.log(name);
     }
+    const [amount2, setamount2] = useState("")
+        const tuitiondetails = (name) => {
+            setamount2(name)
+            console.log(name);
+        }
     const [amounts, setamounts] = useState("")
     const amountsdetails = (name) => {
         setamounts(name)
         console.log(name);
     }
-    const [transport, settransport] = useState("")
-    const transportdetails = (name) => {
-        settransport(name)
+    const [amounts2, setamounts2] = useState("")
+        const setstationarydetails = (name) => {
+            setamounts2(name)
+            console.log(name);
+        }
+
+
+
+
+    const [id, setid] = useState("")
+        const iddetails = (name) => {
+            setid(name)
+            console.log(name);
+        }
+
+        const [classname, setclassdetails] = useState("")
+        const classdetails = (name) => {
+        setclassdetails(name)
         console.log(name);
-    }
-    const [Tuition, settuition] = useState("")
-    const tuitiondetails = (name) => {
-        settuition(name)
-        console.log(name);
-    }
-    const [stationary, setstationary] = useState("")
-    const setstationarydetails = (name) => {
-        setstationary(name)
-        console.log(name);
-    }
+        }
+
+          const [sectionname, setsectiondetails] = useState("")
+               const sectiondetails = (name) => {
+                setsectiondetails(name)
+                 console.log(name);
+                 }
+const [name, setstudentdetails] = useState("")
+               const studentdetails = (name) => {
+                setstudentdetails(name)
+                 console.log(name);
+                 }
+
+const handleGetStarted2 = async () => {
+        try {
+            const response = await fetch('http://10.0.2.2:3000/fees/create_fees', {
+                method: 'POST',
+                body: JSON.stringify({
+                    admission_number:id,
+                    student_name:name,
+                    class:classname,
+                    section:sectionname,
+                    tution_fees:admission,
+                    transport_fees:amount,
+                    stationary_fees:amounts,
+                    tution_fees2:admission2,
+                    transport_fees2:amount2,
+                    stationary_fees2:amounts2
+
+                }),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log("done2", response)
+            if (!response.ok) {
+                throw new Error('Failed to details. Status: ' + response.status);
+            }
+            const data = await response.json();
+            console.log("Fees details created ===> ", data)
+            if (data.success) {
+                // Show alert box
+                Alert.alert("Student Fee Details Created Successfully");
+                // Navigate to Sectiondetails screen
+                navigation.navigate('Feesadd');
+            } else {
+                Alert.alert("Error in creating the student details");
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
     return (
         <SafeAreaView>
             <ScrollView>
 
                 <View style={{ flex: 1, backgroundColor: colors.primary, height: Dimensions.get('window').height }}>
-                    <View>
-                        <Dropdown
-                            style={[styles.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
-                            placeholderStyle={[styles.placeholderStyle, { color: colors.text }]}
-                            selectedTextStyle={[styles.selectedTextStyle, { color: colors.text }]}
-                            inputSearchStyle={styles.inputSearchStyle}
-                            iconStyle={styles.iconStyle}
-                            data={data}
-                            search
-                            maxHeight={400}
-                            labelField="label"
-                            valueField="value"
-                            placeholder="Select Class"
-                            searchPlaceholder="Search..."
-                            value={classvalue}
-                            onChange={item => {
-                                setClassValue(item.value);
-                            }}
 
-                        />
-                    </View>
-                    <View>
-                        <Dropdown
-                            style={[styles.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
-                            placeholderStyle={[styles.placeholderStyle, { color: colors.text }]}
-                            selectedTextStyle={[styles.selectedTextStyle, { color: colors.text }]}
-                            inputSearchStyle={styles.inputSearchStyle}
-                            iconStyle={styles.iconStyle}
-                            data={dataa}
-                            search
-                            maxHeight={400}
-                            labelField="label"
-                            valueField="value"
-                            placeholder="Select Section"
-                            searchPlaceholder="Search..."
-                            value={Sectionvalue}
-                            onChange={item => {
-                                setSectionValue(item.value);
-                            }}
+                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={iddetails} value={id} placeholder='Registration Id' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
 
-                        />
-                    </View>
+                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={studentdetails} value={name} placeholder='Student Name' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
 
-                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={namedetails} value={name} placeholder='Amount' style={{ fontSize: 18, width: '90%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
+
+                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={classdetails} value={classname} placeholder='Class Name' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
+
+                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={sectiondetails} value={sectionname} placeholder='Section Name' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
+
+
+
+
                     <View style={{width:'90%',alignSelf:'center',margin:7,}}>
                     <Text style={{ fontSize: 20,    color: colors.bg,fontWeight:'600',marginTop:6 }}>Firsterm fees details</Text>
 
@@ -145,24 +179,24 @@ export default function Createfee({navigation}) {
 
 <View style={{flexDirection:'row',width:'90%',columnGap:7,justifyContent:'space-between',margin:6}}>
 <Text style={{ fontSize: 19,    color: colors.text }}>Tuition Fees</Text>
-<TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={transportdetails} value={transport} placeholder='Amount' style={{ fontSize: 18, width: '43%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center',height:40  }}></TextInput>
+<TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={transportdetails} value={admission2} placeholder='Amount' style={{ fontSize: 18, width: '43%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center',height:40  }}></TextInput>
 
 </View>
 
 <View style={{flexDirection:'row',width:'90%',columnGap:7,justifyContent:'space-between',margin:6}}>
 <Text style={{ fontSize: 19,    color: colors.text }}>Transport Fees</Text>
-<TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={tuitiondetails} value={Tuition} placeholder='Amount' style={{ fontSize: 18, width: '43%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center',height:40  }}></TextInput>
+<TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={tuitiondetails} value={amount2} placeholder='Amount' style={{ fontSize: 18, width: '43%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center',height:40  }}></TextInput>
 
 </View>
 
 <View style={{flexDirection:'row',width:'90%',columnGap:7,justifyContent:'space-between',margin:6}}>
 <Text style={{ fontSize: 19,    color: colors.text }}>Stationary Fees</Text>
-<TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={setstationarydetails} value={stationary} placeholder='Amount' style={{ fontSize: 18, width: '43%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center',height:40  }}></TextInput>
+<TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={setstationarydetails} value={amounts2} placeholder='Amount' style={{ fontSize: 18, width: '43%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center',height:40  }}></TextInput>
 
 </View>
 
 
-<Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 50, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }}onPress={ () => navigation.navigate('Feesadd')}>
+<Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 50, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 30, }} onPress={handleGetStarted2}>
                         ADD 
                     </Button >
 

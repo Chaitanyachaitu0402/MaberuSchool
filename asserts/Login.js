@@ -20,13 +20,27 @@ export default function Login() {
       });
 
       if (response.data.success) {
-        const { role } = response.data;
         setIsLoading(false);
 
-        if (role === 'admin') {
-          navigation.navigate('schooldrawer'); // Navigate to admin screen
-        } else {
-          navigation.navigate('schooldrawer'); // Example navigation for non-admin users
+        // Navigate based on email
+        switch (email) {
+          case 'Admin@gmail.com':
+            navigation.navigate('schooldrawer');
+            break;
+          case 'Teacher@gmail.com':
+            navigation.navigate('schooldrawer2');
+            break;
+          case 'Principal@gmail.com':
+            navigation.navigate('schooldrawer3');
+            break;
+          case 'Parent@gmail.com':
+            navigation.navigate('schooldrawer4');
+            break;
+          case 'Director@gmail.com':
+            navigation.navigate('schooldrawer5');
+            break;
+          default:
+            Alert.alert('Login Failed', 'Email not recognized for navigation');
         }
       } else {
         setIsLoading(false);
@@ -34,7 +48,7 @@ export default function Login() {
       }
     } catch (error) {
       setIsLoading(false);
-      Alert.alert('Error', 'Something went wrong. Please try again later.');
+      Alert.alert('Enter a Valid Email');
       console.error('Login error:', error);
     }
   };
@@ -86,6 +100,9 @@ export default function Login() {
             SIGN IN
           </Button>
         )}
+
+        <Text style={{textAlign:"center",marginTop:10,fontSize:20,color:"white",fontWeight:"bold"}} onPress={()=>navigation.navigate('Forgot')}>Forgot Password?</Text>
+
       </View>
     </ImageBackground>
   );
@@ -137,7 +154,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     borderRadius: 6,
-    marginTop: 40,
+    marginTop: 20,
   },
   buttonLabel: {
     fontSize: 20,

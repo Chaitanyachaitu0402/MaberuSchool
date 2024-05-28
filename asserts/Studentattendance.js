@@ -12,9 +12,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const AttendanceScreen = ({navigation}) => {
- 
 
- 
+
+
 const{colors}=useTheme();
 
 const [date, setdate] = useState(new Date())
@@ -38,7 +38,7 @@ const section = [
     { label: 'Section A', value: '1' },
     { label: 'Section B', value: '2' },
     { label: 'Section C', value: '3' },
-   
+
   ];
 const [leavevalue, setleaveValue] = useState(null);
 const [sections, setsections] = useState(null);
@@ -74,7 +74,7 @@ const [sections, setsections] = useState(null);
                              style={[style.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
                              placeholderStyle={[style.placeholderStyle, { color: colors.text }]}
                              selectedTextStyle={[style.selectedTextStyle, { color: colors.text }]}
-                      
+
                             inputSearchStyle={style.inputSearchStyle}
                             // iconStyle={styles.iconStyle}
                             data={dataa}
@@ -99,7 +99,7 @@ const [sections, setsections] = useState(null);
                              style={[style.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
                              placeholderStyle={[style.placeholderStyle, { color: colors.text }]}
                              selectedTextStyle={[style.selectedTextStyle, { color: colors.text }]}
-                      
+
                             inputSearchStyle={style.inputSearchStyle}
                             // iconStyle={styles.iconStyle}
                             data={section}

@@ -76,6 +76,11 @@ const Addteacher = ({ navigation }) => {
         console.log(name);
     }
 
+const [rolename, setroledetails] = useState("")
+                    const roledetails = (name) => {
+                        setroledetails(name)
+                        console.log(name);
+                    }
     {/* <Text> Integration </Text> */ }
 
     const getuserdata = async () => {
@@ -87,54 +92,48 @@ const Addteacher = ({ navigation }) => {
         setrefreshToken(refreshtoken);
     }
 
-    const Addteacher = async () => {
-        try {
-            const teacherresponse = await fetch("https:localhost.com:3000/create-teacher", {
-                method: "POST",
-                body: JSON.stringify({ name: name, gender: gender, birth: birthdate, join: joindate, mother: mothername, father: fathername, mobilenumber: mobilenumber, relation: relation, relationMobileNumber: relationmobilenumber, address: address, branch: Branchvalue, subject: subjectname, role: teacherRolevalue, authRole: role }),
-                Authorization: `Bearer ${accessToken}`,
-                headers: { Accept: "application/JSON, text/plain, */*", 'Content-Type': 'application/json; charset=UTF-8' }
-            });
 
-            const teacherdata = await teacherresponse.then(data);
-            if (teacherdata.success) {
-                Alert.alert('successfully teacher has added')
-            } else {
-                if (teacherdata.message == "invalid token") {
-                    generateRefreshtoken(refreshtoken);
-                } else {
-                    Alert.alert('this teacher cant be added right now👌')
-                }
-            }
-
-        } catch (error) {
-            Alert.alert(error)
-        }
-
-        const generateRefreshtoken = async (refreshtoken) => {
-            try {
-                const teacherresponse = await fetch("https:localhost.com:3000/generaterefreshtoken", {
-                    method: "POST", Authorization: `Bearer ${refreshtoken}`
-                }).then((Res) => { return Res.JSON() });
-
-                const teacherdata = teacherresponse
-
-                if (teacherresponse.success) {
-                    AsyncStorage.setItem("accesstoken", teacherdata.accesstoken)
-                    AsyncStorage.setItem("refreshtoken", teacherdata.refreshtoken)
-                    await Addteacher();
-                }
-            } catch (error) {
-
-            }
-        }
-    }
-
-    useEffect(() => {
-        getuserdata()
-    }, [])
 
     {/* <Text> Integration End </Text> */ }
+
+    const handleGetStarted2 = async () => {
+            try {
+                const response = await fetch('http://10.0.2.2:3000/user/create_User', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        first_name: name,
+                        gender: gender,
+                        mobile_number:mobilenumber,
+                        joining_date:joindate,
+                        emergencycontact:relationmobilenumber,
+                        role:rolename,
+                        Address:address
+                    }),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                console.log("done2", response)
+                if (!response.ok) {
+                    throw new Error('Failed to details. Status: ' + response.status);
+                }
+                const data = await response.json();
+                console.log("Non-Teaching details created ===> ", data)
+                if (data.success) {
+                    // Show alert box
+                    Alert.alert("Non-Teaching Details Created Successfully");
+                    // Navigate to Sectiondetails screen
+                    navigation.navigate('Otherstafflist');
+                } else {
+                    Alert.alert("Error in creating the student details");
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
 
     return (
 
@@ -196,28 +195,8 @@ const Addteacher = ({ navigation }) => {
 
                     </View>
 
-                    <View>
-                        <Dropdown
-                    style={[styles.dropdown,{borderBottomColor: colors.text,borderColor: colors.text  }]}
-                    placeholderStyle={[styles.placeholderStyle,{color: colors.text}]}
-                    selectedTextStyle={[styles.selectedTextStyle,{color:colors.text}]}
-                            inputSearchStyle={styles.inputSearchStyle}
-                            iconStyle={styles.iconStyle}
-                            data={dataa}
-                            search
+                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={roledetails} value={rolename} placeholder='Role' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
 
-                            maxHeight={400}
-                            labelField="label"
-                            valueField="value"
-                            placeholder="Select Role"
-                            searchPlaceholder="Search..."
-                            value={teacherRolevalue}
-                            onChange={item => {
-                                setteacherRolevalue(item.value);
-                            }}
-
-                        />
-                    </View>
                     {/* <Text> Dropdown views above </Text> */}
 
 
@@ -235,7 +214,7 @@ const Addteacher = ({ navigation }) => {
 
                    
   
-  <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 17, color: colors.text, fontWeight: 'bold' }} style={{ width: '52%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:9}} onPress={()=>navigation.navigate('Otherstafflist')}>
+  <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 17, color: colors.text, fontWeight: 'bold' }} style={{ width: '52%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:9}} onPress={handleGetStarted2}>
                         ADD 
                     </Button >
                     {/* <Text> Button view above </Text> */}

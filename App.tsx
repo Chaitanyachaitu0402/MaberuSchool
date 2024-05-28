@@ -186,7 +186,7 @@ export default function App() {
 
     <NavigationContainer>
 
-    <stack.Navigator initialRouteName='schoolbottomtab' screenOptions={{
+    <stack.Navigator initialRouteName='Splash' screenOptions={{
       headerStyle: {
         backgroundColor: colors.background,
       },
@@ -196,10 +196,10 @@ export default function App() {
       },
 
     }}>
-        <stack.Screen name='schoolbottomtab' component={Bottomstack4} options={{ headerShown: false }}></stack.Screen>
+{/*         <stack.Screen name='schoolbottomtab' component={Bottomstack4} options={{ headerShown: false }}></stack.Screen> */}
         <stack.Screen name='Onboard' component={Onboard} options={{ headerShown: false}}></stack.Screen>
         <stack.Screen name='Login' component={Login} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Forgot' component={Forgot} options={{ headerShown: false }}></stack.Screen>
+        <stack.Screen name='Forgot' component={Forgot} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Addclass' component={Addclass} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Editclass' component={Editclass} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Addstudent' component={Addstudent} options={{ headerShown: true }}></stack.Screen>
@@ -264,7 +264,7 @@ export default function App() {
         <stack.Screen name='Receipt' component={Receipt} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Studentreview' component={Studentreview} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Principalreview' component={Principalreview} options={{ headerShown: false }}></stack.Screen>
-        <stack.Screen name='Confirmpass' component={Confirmpass} options={{ headerShown: false }}></stack.Screen>
+        <stack.Screen name='Confirmpass' component={Confirmpass} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Note' component={Note} options={{ headerShown: false }}></stack.Screen>
         <stack.Screen name='Result' component={Result} options={{ headerShown: true }}></stack.Screen>
         <stack.Screen name='Examsresult' component={Examsresult} options={{ headerShown: true }}></stack.Screen>

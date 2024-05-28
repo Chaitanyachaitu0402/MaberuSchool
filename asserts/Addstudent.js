@@ -58,7 +58,7 @@ export default function Addstudent({ navigation }) {
                     'Content-Type': 'application/json',
                 },
             });
-    
+
             console.log("done2", response)
             if (!response.ok) {
                 throw new Error('Failed to details. Status: ' + response.status);
@@ -77,7 +77,7 @@ export default function Addstudent({ navigation }) {
             console.error('Error fetching data:', error);
         }
     };
-    
+
 
     const data = [
         { label: 'LKG', value: '1' },
@@ -164,52 +164,7 @@ export default function Addstudent({ navigation }) {
         setrefreshToken(refreshtoken);
     }
 
-    const Addstudent = async () => {
-        try {
-            const studentresponse = await fetch("https://localhost.com:3000/create-student", {
-                method: "POST",
-                body: JSON.stringify({ name: name, gender: gender, birth: birthdate, admission: admission, join: joindate, mother: mothername, father: fathername, mobileNumber: mobilenumber, relation: relation, relationMobileNumber: relationmobilenumber, address: address, motherOccupation: motheroccupation, fatherOccupation: fatheroccupation, branch: Branchvalue, class: Classvalue, section: Sectionvalue }),
-                Authorization: `Bearer ${accessToken}`,
-                headers: { Accept: "application/JSON, text/plain, */*", 'Content-Type': 'application/json; charset=UTF-8' }
-            }).then((Res) => { return Res.json() });
 
-            const studentdata = await studentresponse.then(data);
-            if (studentdata.success) {
-                Alert.alert('successfully student has added')
-            } else {
-                if (studentdata.message == "invalid token") {
-                    generateRefreshtoken(refreshtoken);
-                } else {
-                    Alert.alert('this student cant be added right now')
-                }
-            }
-
-        } catch (error) {
-            Alert.alert(error)
-        }
-
-        const generateRefreshtoken = async (refreshtoken) => {
-            try {
-                const studentresponse = await fetch("https://localhost.com:3000/generaterefreshtoken", {
-                    method: "POST", Authorization: `Bearer ${refreshtoken}`
-                }).then((Res) => { return Res.JSON() });
-
-                const studentdata = studentresponse
-
-                if (studentresponse.success) {
-                    AsyncStorage.setItem("accesstoken", studentdata.accesstoken)
-                    AsyncStorage.setItem("refreshtoken", studentdata.refreshtoken)
-                    await Addstudent();
-                }
-            } catch (error) {
-
-            }
-        }
-    }
-
-    useEffect(() => {
-        getuserdata()
-    }, [])
 
     {/* <Text> Integration End </Text> */ }
 

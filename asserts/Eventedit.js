@@ -40,10 +40,24 @@ export default function Eventadd({navigation}) {
 
     }
 
+    const [branch, setbranch] = useState("")
+        const branchdetails = (name) => {
+            setbranch(name)
+            console.log(name);
+
+        }
+
+         const [eventid, setid] = useState("")
+                const eventiddetails = (name) => {
+                    setid(name)
+                    console.log(name);
+
+                }
+
     const [fileUris, setfileUris] = useState("");
     const [filename, setfilename] = useState("");
     const [filetype, setfiletype] = useState("");
-    
+
     const [fileUriss, setfileUriss] = useState("");
     const [filenames, setfilenames] = useState("");
     const [filetypes, setfiletypes] = useState("");
@@ -57,7 +71,7 @@ export default function Eventadd({navigation}) {
         title: 'select image',
         mediaType: 'mixed'
     };
-   
+
     const AddPick = () => {
         ImagePicker.launchImageLibrary(option1, (res) => {
             if (res.didCancel) {
@@ -112,8 +126,8 @@ export default function Eventadd({navigation}) {
             }
         });
     }
- 
-    
+
+
 
     const getuserdata = async () => {
         const role = await AsyncStorage.getItem("role");
@@ -146,59 +160,42 @@ export default function Eventadd({navigation}) {
     //       }
     //     }).catch((err) => { console.log(err) })
     //   }
-      
-    const Eventadd = async () => {
-        try {
-            
-            const addeventresponse = await fetch("https://localhost.com:3000/create-event", {
-                method: "POST",
-                body: JSON.stringify({ Name: title, Date: eventdate, Time: eventtime, outTime: eventclose, authRole: role }),
-                Authorization: `Bearer ${accessToken}`,
-                headers: { Accept: "application/JSON, text/plain, */*", 'Content-Type': 'application/json; charset=UTF-8' }
-                
-            });
 
-            const addeventdata = await addeventresponse.then(data);
-            if (addeventdata.success) {
-                Alert.alert('successfully event  has added')
-            } else {
-                if (addeventdata.message == "invalid token") {
-                    generateRefreshtoken(refreshtoken);
-                } else {
-                    Alert.alert('this Event cant be added right now')
-                }
-            }
+   const handleGetStarted2 = async () => {
+                  try {
+                      const response = await fetch('http://10.0.2.2:3000/events/create-event', {
+                          method: 'POST',
+                          body: JSON.stringify({
+                             event_name: title,
+                             event_date:eventdate,
+                             from:eventtime,
+                             to:eventclose,
+                             id:eventid
+                          }),
+                          headers: {
+                              'Accept': 'application/json',
+                              'Content-Type': 'application/json',
+                          },
+                      });
 
-        } catch (error) {
-            Alert.alert(error)
-        }
-
-        const generateRefreshtoken = async (refreshtoken) => {
-            try {
-                const addeventresponse = await fetch("https://localhost.com:3000/generaterefreshtoken", {
-                    method: "POST", Authorization: `Bearer ${refreshtoken}`
-                }).then((Res) => { return Res.JSON() });
-
-                const addeventdata = addeventresponse
-
-                if (addeventresponse.success) {
-                    AsyncStorage.setItem("accesstoken", addeventdata.accesstoken)
-                    AsyncStorage.setItem("refreshtoken", addeventdata.refreshtoken)
-                    await Eventadd();
-                }
-            } catch (error) {
-
-            }
-        }
-    }
-   
-
-
-    useEffect(() => {
-        getuserdata()
-
-    }, [])
-
+                      console.log("done2", response)
+                      if (!response.ok) {
+                          throw new Error('Failed to details. Status: ' + response.status);
+                      }
+                      const data = await response.json();
+                      console.log("Event details created ===> ", data)
+                      if (data.success) {
+                          // Show alert box
+                          Alert.alert("Event Details Created Successfully");
+                          // Navigate to Sectiondetails screen
+                          navigation.navigate('Event');
+                      } else {
+                          Alert.alert("Error in creating the student details");
+                      }
+                  } catch (error) {
+                      console.error('Error fetching data:', error);
+                  }
+              };
 
     return (
 
@@ -211,6 +208,9 @@ export default function Eventadd({navigation}) {
                         <Icon name='arrow-left' color={colors.primary} size={24} style={{ marginTop: 20 }}></Icon>
                         <Text style={{ fontSize: 20, fontWeight: 'bold', color: colors.primary, marginTop: 23 }}>Event Add</Text>
                     </View> */}
+
+                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' placeholder='Event Number' onChangeText={eventiddetails} value={eventid} style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', alignSelf: 'center', marginTop: 20 }} ></TextInput>
+
 
                     <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' placeholder='Title Name' onChangeText={titledetails} value={title} style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', alignSelf: 'center', marginTop: 20 }} ></TextInput>
 
@@ -235,6 +235,8 @@ export default function Eventadd({navigation}) {
                         </DatePicker>
 
                     </View>
+
+                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' placeholder='Branch Name' onChangeText={branchdetails} value={branch} style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', alignSelf: 'center', marginTop: 20 }} ></TextInput>
 
 
                     <View style={{ justifyContent: 'center', alignSelf: 'center', width: '87%', flexDirection: 'row', borderColor: colors.text, borderWidth: 1, marginTop: 20 }}>
@@ -280,7 +282,7 @@ export default function Eventadd({navigation}) {
                         </DatePicker>
 
                     </View>
- 
+
                     <ImageBackground resizeMode='stretch' source={{ uri: fileUris ? (fileUris): ('https://www.thestatesman.com/wp-content/uploads/2019/10/mahesh-babu.jpg')}} style={{ width: '100%', height: 100,marginTop: 22, alignSelf: 'center', justifyContent: 'center'}}>
                         <Icon name='plus' color={colors.text} size={44} style={{ alignSelf: 'center', justifyContent: 'center' }} onPress={AddPick} />
                         <Text style={{ fontSize: 20, color: colors.primary, justifyContent: 'center', alignSelf: 'center' }}>Add Photos </Text>
@@ -290,13 +292,13 @@ export default function Eventadd({navigation}) {
                     <Icon name='plus' color={colors.text} size={44} style={{ alignSelf: 'center', justifyContent: 'center' }} onPress={AddPicker} />
                         <Text style={{ fontSize: 20, color: colors.primary, justifyContent: 'center', alignSelf: 'center' }}>Add Photos </Text>
                     </ImageBackground>
-                  
+
                     <ImageBackground resizeMode='stretch' source={{ uri: fileUrisss ? (fileUrisss): ('https://www.thestatesman.com/wp-content/uploads/2019/10/mahesh-babu.jpg')}} style={{ width: '100%', height: 100,marginTop: 22, alignSelf: 'center', justifyContent: 'center'}}>
                     <Icon name='plus' color={colors.text} size={44} style={{ alignSelf: 'center', justifyContent: 'center' }} onPress={AddPickers} />
                         <Text style={{ fontSize: 20, color: colors.primary, justifyContent: 'center', alignSelf: 'center' }}>Add Photos </Text>
                     </ImageBackground>
-                    <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 19, color: colors.text, fontWeight: 'bold' }} style={{ width: '52%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:9}} onPress={home}>
-                        SAVE 
+                    <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 19, color: colors.text, fontWeight: 'bold' }} style={{ width: '52%', height: 55, borderColor: colors.primary, justifyContent: "center", alignSelf: 'center', borderRadius: 10, margin:9}} onPress={handleGetStarted2}>
+                        SAVE
                     </Button >
                 </View>
             </ScrollView>

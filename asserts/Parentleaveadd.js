@@ -39,9 +39,79 @@ export default function Parentleaveadd({navigation}) {
     const [open, setOpen] = useState(false)
     const [data, setdata] = useState("")
 
+
+    const [id, setid] = useState("")
+            const iddetails = (name) => {
+                setid(name)
+                console.log(name);
+            }
+
+    const [name, setname] = useState("")
+            const namedetails = (name) => {
+                setname(name)
+                console.log(name);
+            }
+
+const [classname, setclass] = useState("")
+            const classdetails = (name) => {
+                setclass(name)
+                console.log(name);
+            }
+
+const [sectionname, setsection] = useState("")
+            const sectiondetails = (name) => {
+                setsection(name)
+                console.log(name);
+            }
+
+const [reasonname, setreason] = useState("")
+            const reasondetails = (name) => {
+                setreason(name)
+                console.log(name);
+            }
+
     const home=()=>{
         navigation.navigate("Pendingleavedetails")
     }
+
+    const handleGetStarted2 = async () => {
+                    try {
+                        const response = await fetch('http://10.0.2.2:3000/student-leaves/create-students-leaves', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                name:name,
+                                student_id:id,
+                                class:classname,
+                                section:sectionname,
+                                from:leavedate,
+                                to:date,
+                                reason:reasonname
+                            }),
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                        });
+
+                        console.log("done2", response)
+                        if (!response.ok) {
+                            throw new Error('Failed to details. Status: ' + response.status);
+                        }
+                        const data = await response.json();
+                        console.log("Student Leave details created ===> ", data)
+                        if (data.success) {
+                            // Show alert box
+                            Alert.alert("Your Leave has been Submitted");
+                            // Navigate to Sectiondetails screen
+                            navigation.navigate('Pendingleavedetails');
+                        } else {
+                            Alert.alert("Error in creating the student details");
+                        }
+                    } catch (error) {
+                        console.error('Error fetching data:', error);
+                    }
+                };
+
     return (
         // <SafeAreaView>
             <ScrollView>
@@ -51,54 +121,13 @@ export default function Parentleaveadd({navigation}) {
 
                
 
-                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: colors.text, marginTop: 18, marginStart: 14, left: 6 }}>Subject</Text>
+                   <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={iddetails} value={id} placeholder='Admission Id' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
+                   <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={namedetails} value={name} placeholder='Name' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
+                   <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={classdetails} value={classname} placeholder='Class' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
+                   <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={sectiondetails} value={sectionname} placeholder='Section' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
 
-                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 17 }}></TextInput>
-                    <TextInput placeholder='Name' textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 17 }} ></TextInput>
 
-                    <View >
-    <Dropdown
-        style={style.dropdown}
-        placeholderStyle={style.placeholderStyle}
-        selectedTextStyle={style.selectedTextStyle}
-        inputSearchStyle={style.inputSearchStyle}
-        // iconStyle={styles.iconStyle}
-        data={data1}
-        search
-        maxHeight={400}
-        labelField="label"
-        valueField="value"
-        placeholder="Select Class"
-        searchPlaceholder="Search..."
-        value={section}
-        onChange={item => {
-            setsections(item.value);
-        }}
-   
-    />
-</View>
 
-<View >
-    <Dropdown
-        style={style.dropdown}
-        placeholderStyle={style.placeholderStyle}
-        selectedTextStyle={style.selectedTextStyle}
-        inputSearchStyle={style.inputSearchStyle}
-        // iconStyle={styles.iconStyle}
-        data={dataa}
-        search
-        maxHeight={400}
-        labelField="label"
-        valueField="value"
-        placeholder="Select Section"
-        searchPlaceholder="Search..."
-        value={classes}
-        onChange={item => {
-           setclasses(item.value);
-        }}
-   
-    />
-</View>
                   
                     <Text style={{ fontSize: 17, fontWeight: 'bold', color: colors.text, marginTop: 17, marginStart: 14, left: 6 }}> Leave Date</Text>
 
@@ -167,9 +196,9 @@ export default function Parentleaveadd({navigation}) {
 
                     <Text style={{ fontSize: 18, fontWeight: 'bold', color: colors.text, marginTop: 8, marginStart: 14, left: 6 }}>Reason</Text>
 
-                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined'  multiline={true} style={{ fontSize: 18, width: '88%',height:120, backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 17 }}></TextInput>
+                    <TextInput onChangeText={reasondetails} value={reasonname} textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined'  multiline={true} style={{ fontSize: 18, width: '88%',height:120, backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 17 }}></TextInput>
 
-                        <Button style={{ width: "43%", height: 48, backgroundColor: colors.bg, alignSelf: 'center',marginTop:9 }} labelStyle={{ fontSize: 22, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center', marginTop: 16,color:colors.primary }}onPress={home}>Apply</Button>
+                        <Button style={{ width: "43%", height: 48, backgroundColor: colors.bg, alignSelf: 'center',marginTop:9 }} labelStyle={{ fontSize: 22, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center', marginTop: 16,color:colors.primary }} onPress={handleGetStarted2}>Apply</Button>
 
                 </View>
             </ScrollView>

@@ -7,12 +7,10 @@ import DatePicker from 'react-native-date-picker';
 import { Dropdown } from 'react-native-element-dropdown';
 
 
-export default function Parentleaveedit({navigation}) {
+export default function Parentleaveadd({navigation}) {
     const { colors } = useTheme();
     const [classes, setclasses] = useState(null);
-    const home=()=>{
-        navigation.navigate("Pendingleavedetails")
-    }
+
     const [section, setsections] = useState(null);
     const data1 = [
         { label: 'Class I', value: '1' },
@@ -25,13 +23,13 @@ export default function Parentleaveedit({navigation}) {
         { label: 'Class VIII', value: '8' },
         { label: 'Class IX', value: '9' },
         { label: 'Class X', value: '10' },
-     
+
       ];
       const dataa = [
                 { label: 'Section A', value: '1' },
                 { label: 'Section B', value: '2' },
                 { label: 'Section C', value: '3' },
-                
+
               ];
     const [leavedate, setleavedate] = useState(new Date())
     const [openn, setOpenn] = useState(false)
@@ -42,6 +40,78 @@ export default function Parentleaveedit({navigation}) {
     const [data, setdata] = useState("")
 
 
+    const [id, setid] = useState("")
+            const iddetails = (name) => {
+                setid(name)
+                console.log(name);
+            }
+
+    const [name, setname] = useState("")
+            const namedetails = (name) => {
+                setname(name)
+                console.log(name);
+            }
+
+const [classname, setclass] = useState("")
+            const classdetails = (name) => {
+                setclass(name)
+                console.log(name);
+            }
+
+const [sectionname, setsection] = useState("")
+            const sectiondetails = (name) => {
+                setsection(name)
+                console.log(name);
+            }
+
+const [reasonname, setreason] = useState("")
+            const reasondetails = (name) => {
+                setreason(name)
+                console.log(name);
+            }
+
+    const home=()=>{
+        navigation.navigate("Pendingleavedetails")
+    }
+
+    const handleGetStarted2 = async () => {
+                    try {
+                        const response = await fetch('http://10.0.2.2:3000/student-leaves/update-student-leave', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                name:name,
+                                student_id:id,
+                                class:classname,
+                                section:sectionname,
+                                from:leavedate,
+                                to:date,
+                                reason:reasonname
+                            }),
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                        });
+
+                        console.log("done2", response)
+                        if (!response.ok) {
+                            throw new Error('Failed to details. Status: ' + response.status);
+                        }
+                        const data = await response.json();
+                        console.log("Student Leave details created ===> ", data)
+                        if (data.success) {
+                            // Show alert box
+                            Alert.alert("Your Leave has been Submitted");
+                            // Navigate to Sectiondetails screen
+                            navigation.navigate('Pendingleavedetails');
+                        } else {
+                            Alert.alert("Error in creating the student details");
+                        }
+                    } catch (error) {
+                        console.error('Error fetching data:', error);
+                    }
+                };
+
     return (
         // <SafeAreaView>
             <ScrollView>
@@ -49,59 +119,16 @@ export default function Parentleaveedit({navigation}) {
 
                 <View style={{ flex: 1, backgroundColor: colors.primary, height:Dimensions.get('window').height}}>
 
-               
 
-                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: colors.text, marginTop: 18, marginStart: 14, left: 6 }}>Subject</Text>
 
-                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 17 }}></TextInput>
-                    <TextInput placeholder='Name' textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 17 }} ></TextInput>
+                   <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={iddetails} value={id} placeholder='Admission Id' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
+                   <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={namedetails} value={name} placeholder='Name' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
+                   <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={classdetails} value={classname} placeholder='Class' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
+                   <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={sectiondetails} value={sectionname} placeholder='Section' style={{ fontSize: 18, width: '89%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }}></TextInput>
 
-                    <View >
-    <Dropdown
-             style={[style.dropdown,{borderBottomColor: colors.text,borderColor: colors.text  }]}
-             placeholderStyle={[style.placeholderStyle,{color: colors.text}]}
-             selectedTextStyle={[style.selectedTextStyle,{color:  colors.text}]}
-                
-        inputSearchStyle={style.inputSearchStyle}
-        // iconStyle={styles.iconStyle}
-        data={data1}
-        search
-        maxHeight={400}
-        labelField="label"
-        valueField="value"
-        placeholder="Select Class"
-        searchPlaceholder="Search..."
-        value={section}
-        onChange={item => {
-            setsections(item.value);
-        }}
-   
-    />
-</View>
 
-<View >
-    <Dropdown
-       style={[style.dropdown, { borderBottomColor: colors.text, borderColor: colors.text }]}
-       placeholderStyle={[style.placeholderStyle, { color: colors.text }]}
-       selectedTextStyle={[style.selectedTextStyle, { color: colors.text }]}
 
-        inputSearchStyle={style.inputSearchStyle}
-        // iconStyle={styles.iconStyle}
-        data={dataa}
-        search
-        maxHeight={400}
-        labelField="label"
-        valueField="value"
-        placeholder="Select Section"
-        searchPlaceholder="Search..."
-        value={classes}
-        onChange={item => {
-           setclasses(item.value);
-        }}
-   
-    />
-</View>
-                  
+
                     <Text style={{ fontSize: 17, fontWeight: 'bold', color: colors.text, marginTop: 17, marginStart: 14, left: 6 }}> Leave Date</Text>
 
                     <View style={{ flexDirection: 'row', marginStart: 11, margin: 9, right: 10 }}>
@@ -111,7 +138,7 @@ export default function Parentleaveedit({navigation}) {
                             <Text style={{ fontSize: 17, color: colors.text, marginTop: 7, marginStart: 14, }}> From</Text>
                             <View style={{ width: '62%', flexDirection: 'row', borderColor: colors.text, borderWidth: 1, marginTop: 5, marginStart: 7 }}>
                                 <Icon name='calendar-month-outline' color={colors.bg} size={24} style={{ borderRadius: 18, alignSelf: 'center' }} onPress={() => { setOpenn(true) }} />
-                                <TextInput disabled textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeUnderlineColor={'transparent'} underlineColor={'transparent'} placeholder='start date' style={{ fontSize: 13, width: '86%', backgroundColor: 'transparent', }}>{leavedata ? leavedate.toLocaleDateString() : ""}</TextInput>
+                                <TextInput disabled textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeUnderlineColor={'transparent'} underlineColor={'transparent'} placeholder='start date' style={{ fontSize: 14, width: '86%', backgroundColor: 'transparent', }}>{leavedata ? leavedate.toLocaleDateString() : ""}</TextInput>
 
                                 <DatePicker
                                     modal
@@ -142,7 +169,7 @@ export default function Parentleaveedit({navigation}) {
                             <Text style={{ fontSize: 17, color: colors.text, marginTop: 7, }}>To </Text>
                             <View style={{ width: '62%', flexDirection: 'row', borderColor: colors.text, borderWidth: 1, marginTop: 5, }}>
                                 <Icon name='calendar-month-outline' color={colors.bg} size={24} style={{ borderRadius: 18, alignSelf: 'center' }} onPress={() => { setOpen(true) }} />
-                                <TextInput disabled textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeUnderlineColor={'transparent'} underlineColor={'transparent'} placeholder='start date' style={{ fontSize: 13, width: '86%', backgroundColor: 'transparent', }}>{data ? date.toLocaleDateString() : ""}</TextInput>
+                                <TextInput disabled textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeUnderlineColor={'transparent'} underlineColor={'transparent'} placeholder='start date' style={{ fontSize: 14, width: '86%', backgroundColor: 'transparent', }}>{data ? date.toLocaleDateString() : ""}</TextInput>
 
                                 <DatePicker
                                     modal
@@ -169,9 +196,9 @@ export default function Parentleaveedit({navigation}) {
 
                     <Text style={{ fontSize: 18, fontWeight: 'bold', color: colors.text, marginTop: 8, marginStart: 14, left: 6 }}>Reason</Text>
 
-                    <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined'  multiline={true} style={{ fontSize: 18, width: '88%',height:120, backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 17 }}></TextInput>
+                    <TextInput onChangeText={reasondetails} value={reasonname} textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined'  multiline={true} style={{ fontSize: 18, width: '88%',height:120, backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 17 }}></TextInput>
 
-                        <Button style={{ width: "43%", height: 48, backgroundColor: colors.bg, alignSelf: 'center',marginTop:9 }} labelStyle={{ fontSize: 22, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center', marginTop: 16,color:colors.primary }}onPress={home}>Apply</Button>
+                        <Button style={{ width: "43%", height: 48, backgroundColor: colors.bg, alignSelf: 'center',marginTop:9 }} labelStyle={{ fontSize: 22, fontWeight: 'bold', textAlign: 'center', alignSelf: 'center', marginTop: 16,color:colors.primary }} onPress={handleGetStarted2}>Save</Button>
 
                 </View>
             </ScrollView>
@@ -210,7 +237,7 @@ const style = StyleSheet.create({
         color: 'black',
         marginStart: 6, fontWeight: '500'
     },
-   
+
     inputSearchStyle: {
         height: 40,
         fontSize: 16,

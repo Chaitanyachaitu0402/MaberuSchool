@@ -16,6 +16,12 @@ export default function Addclass({navigation}) {
     setclassname(name)
     console.log(name);
   }
+   const [branchname, setbranchname] = useState("")
+    const branchnamedetails = (name) => {
+      setbranchname(name)
+      console.log(name);
+    }
+
   const [accessToken, setaccessToken] = useState("")
   const [refreshtoken, setrefreshToken] = useState("")
 
@@ -29,85 +35,44 @@ export default function Addclass({navigation}) {
   }
 
 
-  const handleGetStarted2 = async () => {
-          try {
-              const response = await fetch('http://10.0.2.2:3000/class/create_class', {
-                  method: 'POST',
-                  body: JSON.stringify({
-                      class_name: classname,
-                  }),
-                  headers: {
-                      'Accept': 'application/json',
-                      'Content-Type': 'application/json',
-                  },
-              });
-
-              console.log("done2", response)
-              if (!response.ok) {
-                  throw new Error('Failed to details. Status: ' + response.status);
-              }
-              const data = await response.json();
-              console.log("Student details created ===> ", data)
-              if (data.success) {
-                  // Show alert box
-                  Alert.alert("New Class Created Successfully");
-                  // Navigate to Sectiondetails screen
-                  navigation.navigate('Classlist');
-              } else {
-                  Alert.alert("Error in creating the student details");
-              }
-          } catch (error) {
-              console.error('Error fetching data:', error);
-          }
-      };
-
-
-  const Addclass = async () => {
-    try {
-      const classresponse = await fetch("https://localhost.com:3000/create-class", {
-        method: "POST",
-        body: JSON.stringify({ className: classname }),
-        Authorization: `Bearer ${accessToken}`,
-        headers: { Accept: "application/JSON, text/plain, */*", 'Content-Type': 'application/json; charset=UTF-8' }
-      })
-
-      const classdata = await classresponse.then(data);
-      if (classdata.success) {
-        Alert.alert('successfully class has added')
-      } else {
-        if (classdata.message == "invalid token") {
-          generateRefreshtoken(refreshtoken);
-        } else {
-          Alert.alert('this class cant be added right now')
-        }
-      }
-    } catch (error) {
-      Alert.alert(error)
-    }
-
-
-    const generateRefreshtoken = async (refreshtoken) => {
+  // Inside your React Native component
+    const handleGetStarted2 = async () => {
       try {
-        const classresponse = await fetch("https://localhost.com:3000/generaterefreshtoken", {
-          method: "POST", Authorization: `Bearer ${refreshtoken}`
-        }).then((Res) => { return Res.JSON() });
+        const response = await fetch('http://10.0.2.2:3000/class/create_class', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`
+          },
+          body: JSON.stringify({
+            class_name: classname,
+            branch_name:branchname
+          })
+        });
 
-        const classdata = classresponse
+        if (!response.ok) {
+          if (response.status === 401) {
+            await handleRefreshToken();
+            return;
+          }
+          throw new Error('Failed to create section. Status: ' + response.status);
+        }
 
-        if (classresponse.success) {
-          AsyncStorage.setItem("accesstoken", classdata.accesstoken)
-          AsyncStorage.setItem("refreshtoken", classdata.refreshtoken)
-          await Addclass();
+        const data = await response.json();
+
+        if (data.success) {
+          Alert.alert("Success", "New Class Created Successfully");
+          navigation.navigate('Classlist');
+        } else {
+          Alert.alert("Error", "Failed to create section");
         }
       } catch (error) {
+        Alert.alert("Error", error.message);
       }
-    }
-  }
+    };
 
-  
-  useEffect(() => {
-    getuserdata()
-  }, [])
+
 
   {/* <Text> Integration End </Text> */ }
 
@@ -118,6 +83,8 @@ export default function Addclass({navigation}) {
       <Image source={require("./Image/School.jpg")} style={{ height: 150, width: 150, justifyContent: 'center', alignSelf: 'center', borderRadius: 10, marginTop: 30 }}></Image>
 
       <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={classnamedetails} value={classname} placeholder='Class Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }} left={<TextInput.Icon icon={'account'} > </TextInput.Icon>}></TextInput>
+
+      <TextInput textColor={colors.text} placeholderTextColor={colors.text} textContentType='name' activeOutlineColor={colors.text} outlineColor={colors.text} mode='outlined' onChangeText={branchnamedetails} value={branchname} placeholder='Branch Name' style={{ fontSize: 18, width: '87%', backgroundColor: 'transparent', borderRadius: 5, alignSelf: 'center', marginTop: 20 }} left={<TextInput.Icon icon={'domain'} > </TextInput.Icon>}></TextInput>
 
       <Button textColor={colors.text} buttonColor={colors.bg} labelStyle={{ fontSize: 20, color: colors.text, fontWeight: 'bold' }} style={{ width: '40%', height: 60, borderColor: colors.background, justifyContent: "center", alignSelf: 'center', borderRadius: 10, marginTop: 40 }} onPress={handleGetStarted2}>
         ADD 
